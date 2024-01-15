@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8800522177408950358}
   m_Layer: 0
-  m_Name: EnemyParent
+  m_Name: EnemyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
