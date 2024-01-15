@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
         else if (Timer > 0 && Enemy.remainingDistance < 1)
         {
             Timer -= 1 * Time.deltaTime;
-            Debug.Log(Timer);
+            //Debug.Log(Timer);
         }
 
     }
