@@ -6,6 +6,8 @@ TagManager:
   tags:
   - NavPoint
   - Enemy
+  - EnemyBody
+  - EnemyCritBox
   layers:
   - Default
   - TransparentFX
