@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +22,21 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private Transform debugTransform;
 
+	private float cameraSensitivity;
+	[SerializeField]
+	[Tooltip("Camera sensitivity when NOT aiming")]
+	private float cameraMainSensitivity = 5f;  // Camera sensitivity when NOT aiming
+	[SerializeField]
+	[Tooltip("Camera sensitivity when aiming")]
+	private float cameraAimSensitivity = 2.5f;   // Camera sensitivity when aiming
+
+	[SerializeField]
+	[Tooltip("Minimum vertical rotation of the CameraTarget gameobject")]
+	float minVerticalRotation = -80f;   // Define min rotation
+	[SerializeField]
+	[Tooltip("Maximum vertical rotation of the CameraTarget gameobject")]
+	float maxVerticalRotation = 80f;   // Define max rotation
+
 	public GameObject vfxHitGreen;
 	public GameObject vfxHitRed;
 
@@ -43,6 +56,31 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		// LOOK //
+		// Keep track of current rotation
+		float verticalRotation = cameraTarget.transform.localEulerAngles.x;
+
+		// Rotate the player and camera based on lookInput
+		if (lookInput != Vector2.zero)
+		{
+			// Calculate new rotation
+			float newVerticalRotation = verticalRotation - lookInput.y * cameraSensitivity;
+
+			// Adjust for 360 degree system
+			if (newVerticalRotation > 180)
+			{
+				newVerticalRotation -= 360;
+			}
+
+			// Clamp rotation to min and max angles
+			verticalRotation = Mathf.Clamp(newVerticalRotation, minVerticalRotation, maxVerticalRotation);
+
+			// Apply rotation
+			cameraTarget.transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
+			this.transform.Rotate(Vector3.up, lookInput.x * cameraSensitivity);
+		}
+
+		// SHOOT //
 		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
 		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
@@ -52,8 +90,6 @@ public class PlayerController : MonoBehaviour
 			debugTransform.position = raycastHit.point;
 			mouseWorldPosition = raycastHit.point;
 			hitTransform = raycastHit.transform;
-
-			Debug.Log($"Raycast hit");
 		}
 		else    // Manually set distance of raycast
 		{
@@ -81,10 +117,12 @@ public class PlayerController : MonoBehaviour
 		{
 			if (!aimVirtualCamera.gameObject.activeInHierarchy)
 			{
+				cameraSensitivity = cameraAimSensitivity / 10;  // Divided by 10 to get the correct value
 				aimVirtualCamera.gameObject.SetActive(true);
 			}
 			else
 			{
+				cameraSensitivity = cameraMainSensitivity / 10;   // Divided by 10 to get the correct value
 				aimVirtualCamera.gameObject.SetActive(false);
 			}
 		}
@@ -92,11 +130,6 @@ public class PlayerController : MonoBehaviour
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
-		/*if (!context.performed)
-		{
-			return;
-		}*/
-
 		if (hitTransform != null)
 		{
 			if (hitTransform.GetComponent<Damageable>() != null)
