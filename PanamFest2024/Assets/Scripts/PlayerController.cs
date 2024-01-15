@@ -132,10 +132,11 @@ public class PlayerController : MonoBehaviour
 	{
 		if (hitTransform != null)
 		{
-			if (hitTransform.GetComponent<Damageable>() != null)
+			if (hitTransform.GetComponent<IDamageable>() != null)
 			{
 				// Hit damageable
 				Instantiate(vfxHitGreen, debugTransform.position, Quaternion.identity);
+				Destroy(hitTransform.gameObject);
 			}
 			else
 			{
