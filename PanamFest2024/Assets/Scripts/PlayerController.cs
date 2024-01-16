@@ -37,9 +37,9 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Raycast")]
 	[SerializeField]
-	private float raycastRange = 50f;
+	private float raycastRange = 200f;
 	[SerializeField]
-	private float projectileSpeed = .1f;
+	private float projectileSpeed = 30f;
 
 	private Transform hitTransform = null;
 	private float hitDistance;
@@ -169,6 +169,14 @@ public class PlayerController : MonoBehaviour
 
 			debugTransform.position = raycastHit.point;
 			mouseWorldPosition = raycastHit.point;
+			hitTransform = raycastHit.transform;
+		}
+		else    // Manually set distance of raycast
+		{
+			hitDistance = raycastHit.distance;
+
+			debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
+			mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
 			hitTransform = raycastHit.transform;
 		}
 
