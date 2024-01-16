@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +18,11 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField]
 	private float weaponRange = 50f;
+	[SerializeField]
+	private float projectileSpeed = .1f;
 
 	private Transform hitTransform = null;
+	private float hitDistance;
 	[SerializeField]
 	private Transform debugTransform;
 
@@ -79,24 +83,6 @@ public class PlayerController : MonoBehaviour
 			cameraTarget.transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
 			this.transform.Rotate(Vector3.up, lookInput.x * cameraSensitivity);
 		}
-
-		// SHOOT //
-		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-
-		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-
-		if (Physics.Raycast(ray, out RaycastHit raycastHit, weaponRange))
-		{
-			debugTransform.position = raycastHit.point;
-			mouseWorldPosition = raycastHit.point;
-			hitTransform = raycastHit.transform;
-		}
-		else    // Manually set distance of raycast
-		{
-			debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * weaponRange;
-			mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * weaponRange;
-			hitTransform = raycastHit.transform;
-		}
 	}
 
 	public void OnLook(InputAction.CallbackContext context)
@@ -136,10 +122,31 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
 
-		AudioManager.Instance.Play("SniperLaser_Shoot");
+		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
+		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+		if (Physics.Raycast(ray, out RaycastHit raycastHit, weaponRange))
+		{
+			hitDistance = raycastHit.distance;
+
+			debugTransform.position = raycastHit.point;
+			mouseWorldPosition = raycastHit.point;
+			hitTransform = raycastHit.transform;
+		}
+
+		AudioManager.Instance.Play("SniperLaser_Shoot");
+		StartCoroutine(HitTransform());
+	}
+
+	IEnumerator HitTransform()
+	{
 		if (hitTransform != null)
 		{
+			float waitTime = CalculateImpactWaitTime(projectileSpeed, hitDistance);
+			hitDistance = 0;
+
+			yield return new WaitForSecondsRealtime(waitTime);
 
 			if (hitTransform.GetComponent<IDamageable>() != null)
 			{
@@ -154,5 +161,11 @@ public class PlayerController : MonoBehaviour
 				Instantiate(vfxHitRed, debugTransform.position, Quaternion.identity);
 			}
 		}
+	}
+
+	private float CalculateImpactWaitTime(float speed, float distance)
+	{
+		float time = distance / speed;
+		return time;
 	}
 }
