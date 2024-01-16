@@ -988,7 +988,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 00c5af600da7c3b4fadb152ad7bad425, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 483f9e4abac54af4181a3a5e5ccaf385, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1600223791
 Transform:
@@ -1468,6 +1468,7 @@ GameObject:
   - component: {fileID: 3046279790698247724}
   - component: {fileID: 7929711291823746437}
   - component: {fileID: 4923454254347060114}
+  - component: {fileID: 7929711291823746438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1668,6 +1669,86 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 301cb3ad-bf4b-401d-a612-6e35d71c4cba
     m_ActionName: RexyInput/Shoot
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7929711291823746437}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f25c4db4-5652-49e4-a8e6-0daebfff81eb
+    m_ActionName: InvertedRexyInput/Look[/Mouse/delta/left,/Mouse/delta/right,/Mouse/delta/up,/Mouse/delta/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7929711291823746437}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 098a1ee2-912b-4f29-af2f-a4182be993a0
+    m_ActionName: InvertedRexyInput/Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7929711291823746437}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7eab1f5f-67ff-4d1a-9958-53c1a33dfa62
+    m_ActionName: InvertedRexyInput/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7929711291823746438}
+        m_TargetAssemblyTypeName: InputMapping, Assembly-CSharp
+        m_MethodName: OnSwitchInputLayout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4f1e306c-63eb-4dc1-a6f0-c9d6a56a18b4
+    m_ActionName: RexyInput/SwitchInputLayout[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7929711291823746438}
+        m_TargetAssemblyTypeName: InputMapping, Assembly-CSharp
+        m_MethodName: OnSwitchInputLayout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c672b972-d5e0-4c29-ae26-a474678d871f
+    m_ActionName: InvertedRexyInput/SwitchInputLayout[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: RexyInput
@@ -1874,6 +1955,18 @@ MonoBehaviour:
   maxVerticalRotation: 80
   vfxHitGreen: {fileID: 3176696417840036403, guid: faa8d43bd8fc49442a1c7093a25ad530, type: 3}
   vfxHitRed: {fileID: 2267907756078020405, guid: 8cc78077d3a8fdc449e8949767dc139d, type: 3}
+--- !u!114 &7929711291823746438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2747964261967944829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06e691427b6a684d9fe7910075793f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7953864267730487454
 Transform:
   m_ObjectHideFlags: 0
@@ -2004,6 +2097,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2010868204}
   - {fileID: 577396591}
   - {fileID: 1979119690}
   - {fileID: 1600223791}
@@ -2021,4 +2115,3 @@ SceneRoots:
   - {fileID: 805700878}
   - {fileID: 68841355}
   - {fileID: 1068282368}
-  - {fileID: 2010868204}
