@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
 		if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
 		{
 			lookInput = context.ReadValue<Vector2>();
+			Debug.Log(context.ReadValue<Vector2>());
 		}
 		else if (context.phase == InputActionPhase.Canceled)
 		{
