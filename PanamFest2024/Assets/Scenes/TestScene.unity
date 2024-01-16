@@ -1416,6 +1416,7 @@ MonoBehaviour:
   aimCrosshair: {fileID: 2094852671}
   vfxHitGreen: {fileID: 3176696417840036403, guid: faa8d43bd8fc49442a1c7093a25ad530, type: 3}
   vfxHitRed: {fileID: 2267907756078020405, guid: 8cc78077d3a8fdc449e8949767dc139d, type: 3}
+  cooldownTime: 0.5
 --- !u!4 &1863181639623449348
 Transform:
   m_ObjectHideFlags: 0
