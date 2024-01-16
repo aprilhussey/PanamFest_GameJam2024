@@ -53,8 +53,15 @@ public class PlayerController : MonoBehaviour
 	private GameObject aimCrosshair;
 
 	[Header("VFX")]
-	public GameObject vfxHitGreen;
-	public GameObject vfxHitRed;
+	[SerializeField]
+	private GameObject vfxHitGreen;
+	[SerializeField]
+	private GameObject vfxHitRed;
+
+	[Header("Cooldown")]
+	[SerializeField]
+	private float cooldownTime = .5f;
+	private float cooldownTimer = 0;
 
 	void Awake()
 	{
@@ -97,6 +104,11 @@ public class PlayerController : MonoBehaviour
 			// Apply rotation
 			cameraTarget.transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
 			this.transform.Rotate(Vector3.up, lookInput.x * cameraSensitivity);
+		}
+
+		if (cooldownTimer > 0)	// If in cooldown
+		{
+			cooldownTimer -= Time.deltaTime;
 		}
 	}
 
@@ -154,34 +166,39 @@ public class PlayerController : MonoBehaviour
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
-		if (!context.performed)
+		if (cooldownTimer <= 0)	// If not in cooldown
 		{
-			return;
+			if (!context.performed)
+			{
+				return;
+			}
+
+			Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+
+			Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+			if (Physics.Raycast(ray, out RaycastHit raycastHit, raycastRange))
+			{
+				hitDistance = raycastHit.distance;
+
+				debugTransform.position = raycastHit.point;
+				mouseWorldPosition = raycastHit.point;
+				hitTransform = raycastHit.transform;
+			}
+			else    // Manually set distance of raycast
+			{
+				hitDistance = raycastHit.distance;
+
+				debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
+				mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
+				hitTransform = raycastHit.transform;
+			}
+
+			cooldownTimer = cooldownTime;
+
+			AudioManager.Instance.Play("SniperLaser_Shoot");
+			StartCoroutine(HitTransform());
 		}
-
-		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-
-		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-
-		if (Physics.Raycast(ray, out RaycastHit raycastHit, raycastRange))
-		{
-			hitDistance = raycastHit.distance;
-
-			debugTransform.position = raycastHit.point;
-			mouseWorldPosition = raycastHit.point;
-			hitTransform = raycastHit.transform;
-		}
-		else    // Manually set distance of raycast
-		{
-			hitDistance = raycastHit.distance;
-
-			debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
-			mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
-			hitTransform = raycastHit.transform;
-		}
-
-		AudioManager.Instance.Play("SniperLaser_Shoot");
-		StartCoroutine(HitTransform());
 	}
 
 	IEnumerator HitTransform()
