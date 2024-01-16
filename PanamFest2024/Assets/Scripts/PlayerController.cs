@@ -131,8 +131,16 @@ public class PlayerController : MonoBehaviour
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
+		if (!context.performed)
+		{
+			return;
+		}
+
+		AudioManager.Instance.Play("SniperLaser_Shoot");
+
 		if (hitTransform != null)
 		{
+
 			if (hitTransform.GetComponent<IDamageable>() != null)
 			{
 				// Hit damageable
