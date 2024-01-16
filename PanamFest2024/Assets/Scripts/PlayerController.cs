@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
 	private Vector2 lookInput;
 
 	[SerializeField]
+	bool Inverted;
+
+	[SerializeField]
 	private GameObject cameraTarget;
 
 	[SerializeField]
@@ -101,15 +104,31 @@ public class PlayerController : MonoBehaviour
 
 	public void OnLook(InputAction.CallbackContext context)
 	{
-		if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+		if (!Inverted)
 		{
-			lookInput = context.ReadValue<Vector2>();
-			Debug.Log(context.ReadValue<Vector2>());
-		}
-		else if (context.phase == InputActionPhase.Canceled)
+            if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+            {
+                lookInput = context.ReadValue<Vector2>();
+                //Debug.Log(context.ReadValue<Vector2>());
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                lookInput = Vector2.zero;
+            }
+        }
+		else if (Inverted)
 		{
-			lookInput = Vector2.zero;
-		}
+            if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+            {
+                lookInput = -context.ReadValue<Vector2>();
+                //Debug.Log(context.ReadValue<Vector2>());
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                lookInput = Vector2.zero;
+            }
+        }
+
 	}
 
 	public void OnAim(InputAction.CallbackContext context)
