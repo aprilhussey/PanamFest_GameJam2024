@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+
     [SerializeField] GameObject PointA;
     [SerializeField] GameObject PointB;
 
@@ -13,7 +14,10 @@ public class EnemyMovement : MonoBehaviour
 
     string CurrentTarget;
 
+    [Tooltip("The amount of time before the enemy starts moving again")]
     [SerializeField] float Timer;
+
+    // Used for resetting the timer
     float TempTimer;
 
     // Start is called before the first frame update
