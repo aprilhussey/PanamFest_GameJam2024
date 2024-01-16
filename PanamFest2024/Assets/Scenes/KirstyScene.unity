@@ -389,15 +389,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7320492
+      value: 86.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.844492
+      value: -131.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
       propertyPath: m_LocalRotation.w
@@ -427,6 +427,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 611e31ca82b559d4c8b496b56edd3f84, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6528f9f9d86b5744d805e92f45b10aaf, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03caba47ad1a85f4c9ec2b9ae4be1850, type: 2}
     - target: {fileID: 919132149155446097, guid: 6cc5c5ad3c953104e888ec1ff5553321, type: 3}
       propertyPath: m_Name
       value: Building_01
@@ -690,6 +702,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -85.978
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9021c17ab68f8f1419b7559561179a6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4310b1189656c4b4892dd6c8188de377, type: 2}
     - target: {fileID: 919132149155446097, guid: 9021c17ab68f8f1419b7559561179a6c, type: 3}
       propertyPath: m_Name
       value: Building_04
