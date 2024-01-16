@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Raycast")]
 	[SerializeField]
-	private float weaponRange = 50f;
+	private float raycastRange = 50f;
 	[SerializeField]
 	private float projectileSpeed = .1f;
 
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
 		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-		if (Physics.Raycast(ray, out RaycastHit raycastHit, weaponRange))
+		if (Physics.Raycast(ray, out RaycastHit raycastHit, raycastRange))
 		{
 			hitDistance = raycastHit.distance;
 
@@ -204,5 +204,11 @@ public class PlayerController : MonoBehaviour
 	{
 		float time = distance / speed;
 		return time;
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, raycastRange);
 	}
 }
