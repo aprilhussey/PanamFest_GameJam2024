@@ -147,7 +147,7 @@ MonoBehaviour:
   HasThumbnail: 0
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://Tile01_Draft\" label=\"\" >\n 
     <presetinput identifier=\"$outputsize\" uid=\"3429939940\" type=\"8\" value=\"10,10\"
-    />\n  <presetinput identifier=\"levelinmid\" uid=\"2951181861\" type=\"0\" value=\"0.331\"
+    />\n  <presetinput identifier=\"levelinmid\" uid=\"2951181861\" type=\"0\" value=\"0\"
     />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
             midtone levels
           Type: 0
           WidgetType: 1
-        Data: 0.331
+        Data: 0
         NumericalDescription:
           DefaultValue: 0.33165
           MinValue: 0
