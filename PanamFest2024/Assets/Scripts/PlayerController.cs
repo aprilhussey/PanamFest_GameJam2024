@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 		aimVirtualCamera.gameObject.SetActive(false);
 	}
 
-	void FixedUpdate()
+	void Update()
 	{
 		// LOOK //
 		// Keep track of current rotation
@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
 				// Hit damageable
 				Instantiate(vfxHitGreen, debugTransform.position, Quaternion.identity);
 				Destroy(hitTransform.gameObject);
+				AudioManager.Instance.Play("SniperLaser_Impact");
 			}
 			else
 			{
