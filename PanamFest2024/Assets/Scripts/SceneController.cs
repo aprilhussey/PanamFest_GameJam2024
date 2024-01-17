@@ -79,6 +79,16 @@ public class SceneController : MonoBehaviour
 
 			//GameManager.Instance.InputMapping = GameObject.FindWithTag("Player").GetComponent<InputMapping>();
 		}
+
+		if (scene.name == "ScoreScreen")
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+
+			mainMenuCanvas.SetActive(false);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+		}
 	}
 
 	public void OnResumeButtonClick()
