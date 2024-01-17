@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
     [SerializeField]
-    private Text scoreText;
+    private TextMeshProUGUI scoreText;
 
     private int score;
 
@@ -17,12 +18,12 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        score = GameManager.Instance.PlayerScore;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        score = GameManager.Instance.PlayerScore;
     }
 }

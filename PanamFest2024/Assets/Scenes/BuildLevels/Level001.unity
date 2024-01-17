@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1387,9 +1387,9 @@ MonoBehaviour:
   VolumeSlider: {fileID: 0}
   InvertedControlsToggle: {fileID: 0}
   InputMappingToggle: {fileID: 0}
-  AudioManager: {fileID: 0}
-  InputMapping: {fileID: 0}
-  PlayerController: {fileID: 0}
+  AudioManager: {fileID: 819770113}
+  InputMapping: {fileID: 2049725258}
+  PlayerController: {fileID: 2049725256}
 --- !u!4 &247097148
 Transform:
   m_ObjectHideFlags: 0
@@ -8056,6 +8056,7 @@ MonoBehaviour:
   vfxHitGreen: {fileID: 3176696417840036403, guid: faa8d43bd8fc49442a1c7093a25ad530, type: 3}
   vfxHitRed: {fileID: 2267907756078020405, guid: 8cc78077d3a8fdc449e8949767dc139d, type: 3}
   cooldownTime: 1.5
+  cooldownTimer: 0
   pauseAction:
     m_Name: Pause
     m_Type: 1
