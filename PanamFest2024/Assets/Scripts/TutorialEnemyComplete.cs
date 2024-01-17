@@ -9,6 +9,8 @@ public class TutorialEnemyComplete : MonoBehaviour
     public GameObject upAndDownText;
     public GameObject zoomText;
     public GameObject shootText;
+    public GameObject mainCrosshair;
+    public GameObject aimCrosshair;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,9 @@ public class TutorialEnemyComplete : MonoBehaviour
             upAndDownText.SetActive(false);
             zoomText.SetActive(false);
             shootText.SetActive(false);
+            mainCrosshair.SetActive(false);
+            aimCrosshair.SetActive(false);
+            
         }
     }
 
