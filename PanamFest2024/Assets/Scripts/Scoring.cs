@@ -17,12 +17,12 @@ public class Scoring : MonoBehaviour
         {
             if (CritHitBox == null)
             {
-                GameManager.PlayerScore += GameManager.CritScore;
+                GameManager.Instance.PlayerScore += GameManager.Instance.CritScore;
             }
 
             else if (BodyHitBox == null)
             {
-                GameManager.PlayerScore += GameManager.NormalScore;
+                GameManager.Instance.PlayerScore += GameManager.Instance.NormalScore;
             }
 
             Destroy(this.gameObject);

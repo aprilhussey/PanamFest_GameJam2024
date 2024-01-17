@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioManager AudioManager;
 
     [Tooltip("")]
-    [SerializeField] InputMapping InputMapping;
+    [SerializeField] public InputMapping InputMapping;
 
     [Tooltip("")]
     [SerializeField] PlayerController PlayerController;
