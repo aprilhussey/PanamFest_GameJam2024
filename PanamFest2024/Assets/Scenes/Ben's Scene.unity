@@ -228,7 +228,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1683933451584198628, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
@@ -613,6 +614,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &791506029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6702855192181213812, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
+  m_PrefabInstance: {fileID: 420638662478800118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &805700878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -718,7 +724,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1683933451584198628, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
@@ -827,7 +834,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1683933451584198628, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
@@ -1218,6 +1226,12 @@ MonoBehaviour:
   NormalScore: 100
   CritScore: 150
   PlayerScore: 0
+  VolumeSlider: {fileID: 0}
+  InvertedControlsToggle: {fileID: 0}
+  InputMappingToggle: {fileID: 0}
+  AudioManager: {fileID: 0}
+  InputMapping: {fileID: 0}
+  PlayerController: {fileID: 0}
 --- !u!4 &2010868204
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,9 +1256,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 2010868203}
+    - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
+      propertyPath: RespawnTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570532419908652194, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
+      propertyPath: EnemyParent
+      value: 
+      objectReference: {fileID: 791506029}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1338,7 +1364,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1683933451584198628, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
@@ -1836,6 +1863,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c672b972-d5e0-4c29-ae26-a474678d871f
     m_ActionName: InvertedRexyInput/SwitchInputLayout[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91827094-652e-41b4-a44e-0fba57ddebd3
+    m_ActionName: RexyInput/Pause[/Mouse/middleButton,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9035fd63-6923-430a-bf3b-831a9e20ec50
+    m_ActionName: InvertedRexyInput/Pause[/Mouse/middleButton,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: RexyInput
@@ -2035,15 +2070,18 @@ MonoBehaviour:
   Inverted: 0
   cameraTarget: {fileID: 6034158574957000129}
   aimVirtualCamera: {fileID: 6568128847966947962}
-  weaponRange: 150
-  projectileSpeed: 30
-  debugTransform: {fileID: 8659582775247735330}
   cameraMainSensitivity: 10
   cameraAimSensitivity: 5
   minVerticalRotation: -80
   maxVerticalRotation: 80
+  raycastRange: 200
+  projectileSpeed: 60
+  debugTransform: {fileID: 8659582775247735330}
+  mainCrosshair: {fileID: 0}
+  aimCrosshair: {fileID: 0}
   vfxHitGreen: {fileID: 3176696417840036403, guid: faa8d43bd8fc49442a1c7093a25ad530, type: 3}
   vfxHitRed: {fileID: 2267907756078020405, guid: 8cc78077d3a8fdc449e8949767dc139d, type: 3}
+  cooldownTime: 0.5
 --- !u!114 &7929711291823746438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,6 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06e691427b6a684d9fe7910075793f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlippedWheels: 0
 --- !u!4 &7953864267730487454
 Transform:
   m_ObjectHideFlags: 0

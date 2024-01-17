@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
 
-    [SerializeField] GameObject PointA;
-    [SerializeField] GameObject PointB;
+    GameObject PointA;
+    GameObject PointB;
 
     NavMeshAgent Enemy;
 
@@ -20,6 +20,12 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PointA = GetComponentInParent<RespawnController>().gameObject;
+        PointA = PointA.GetComponentInChildren<PointA>().gameObject;
+
+        PointB = GetComponentInParent<RespawnController>().gameObject;
+        PointB = PointB.GetComponentInChildren<PointB>().gameObject;
+
         Enemy = GetComponent<NavMeshAgent>();
 
         CurrentTarget = "A";
