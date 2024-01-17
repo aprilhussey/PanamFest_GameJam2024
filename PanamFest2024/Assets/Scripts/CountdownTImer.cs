@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class CountdownTImer : MonoBehaviour
+public class CountdownTimer : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI timerText;

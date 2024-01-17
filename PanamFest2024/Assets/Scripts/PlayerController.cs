@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
 		{
 			// LOOK //
 			// Keep track of current rotation
@@ -135,28 +135,29 @@ public class PlayerController : MonoBehaviour
 				cooldownTimer -= Time.deltaTime;
 			}
 		}
+		else if (pauseMenuCanvas.activeInHierarchy || optionsMenuCanvas.activeInHierarchy)
+		{
+			lookInput = Vector2.zero;
+		}
 	}
 
 	void OnPausePerformed(InputAction.CallbackContext context)
 	{
-		if (context.action.triggered)
+		if (!pauseMenuCanvas.activeInHierarchy)
 		{
-			if (!pauseMenuCanvas.activeInHierarchy)
-			{
-				Time.timeScale = 0f;
+			Time.timeScale = 0f;
 
-				pauseMenuCanvas.SetActive(true);
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.None;
-			}
-			else if (pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy)
-			{
-				Time.timeScale = 1f;
+			pauseMenuCanvas.SetActive(true);
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+		}
+		else if (pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy)
+		{
+			Time.timeScale = 1f;
 
-				pauseMenuCanvas.SetActive(false);
-				Cursor.visible = false;
-				Cursor.lockState = CursorLockMode.Locked;
-			}
+			pauseMenuCanvas.SetActive(false);
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
 		}
 	}
 
@@ -189,13 +190,17 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 		}
+		else
+		{
+			return;
+		}
 	}
 
 	public void OnAim(InputAction.CallbackContext context)
 	{
-		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (context.action.triggered)
 		{
-			if (context.action.triggered)
+			if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
 			{
 				if (!aimVirtualCamera.gameObject.activeInHierarchy)
 				{
@@ -219,7 +224,7 @@ public class PlayerController : MonoBehaviour
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
-		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
 		{
 			if (cooldownTimer <= 0) // If not in cooldown
 			{
@@ -254,6 +259,10 @@ public class PlayerController : MonoBehaviour
 				AudioManager.Instance.Play("SniperLaser_Shoot");
 				StartCoroutine(HitTransform());
 			}
+		}
+		else
+		{
+			return;
 		}
 	}
 
