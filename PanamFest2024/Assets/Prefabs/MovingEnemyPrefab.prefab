@@ -150,9 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43193f31788c074419171a153f0bff66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 0}
-  CritHitBox: {fileID: 0}
-  BodyHitBox: {fileID: 0}
+  CritHitBox: {fileID: 8630323022867834476}
+  BodyHitBox: {fileID: 2583625280872087805}
 --- !u!1 &8630323022867834476
 GameObject:
   m_ObjectHideFlags: 0

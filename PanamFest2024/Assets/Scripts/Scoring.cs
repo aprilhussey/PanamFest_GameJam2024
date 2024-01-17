@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Scoring : MonoBehaviour
 {
-    [SerializeField] GameManager GameManager;
-
     [Tooltip("The crit box attatched to the enemy")]
     [SerializeField] GameObject CritHitBox;
 

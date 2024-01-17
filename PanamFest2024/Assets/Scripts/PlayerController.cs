@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-	private Vector2 lookInput;
+	[HideInInspector]
+	public Vector2 lookInput;
 
 	[SerializeField]
 	public bool Inverted;
