@@ -295,16 +295,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbbf0fbf91453a4cb445b28af8e448d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inverted: 0
   cameraTarget: {fileID: 6034158574556188357}
   aimVirtualCamera: {fileID: 6568128848912462206}
-  weaponRange: 50
-  debugTransform: {fileID: 8659582775651168550}
   cameraMainSensitivity: 15
   cameraAimSensitivity: 7.5
   minVerticalRotation: -80
   maxVerticalRotation: 80
+  raycastRange: 200
+  projectileSpeed: 30
+  debugTransform: {fileID: 8659582775651168550}
+  mainCrosshair: {fileID: 0}
+  aimCrosshair: {fileID: 0}
   vfxHitGreen: {fileID: 3176696417840036403, guid: faa8d43bd8fc49442a1c7093a25ad530, type: 3}
   vfxHitRed: {fileID: 2267907756078020405, guid: 8cc78077d3a8fdc449e8949767dc139d, type: 3}
+  cooldownTime: 0.5
+  cooldownTimer: 0
+  pauseAction:
+    m_Name: Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3026c7bc-848e-4232-a55f-cdbaa6e3b99f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &4923454255018473622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +393,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 301cb3ad-bf4b-401d-a612-6e35d71c4cba
     m_ActionName: RexyInput/Shoot
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f1e306c-63eb-4dc1-a6f0-c9d6a56a18b4
+    m_ActionName: RexyInput/SwitchInputLayout[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91827094-652e-41b4-a44e-0fba57ddebd3
+    m_ActionName: RexyInput/Pause[/Mouse/middleButton,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f25c4db4-5652-49e4-a8e6-0daebfff81eb
+    m_ActionName: InvertedRexyInput/Look[/Mouse/delta/left,/Mouse/delta/right,/Mouse/delta/up,/Mouse/delta/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 098a1ee2-912b-4f29-af2f-a4182be993a0
+    m_ActionName: InvertedRexyInput/Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7eab1f5f-67ff-4d1a-9958-53c1a33dfa62
+    m_ActionName: InvertedRexyInput/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c672b972-d5e0-4c29-ae26-a474678d871f
+    m_ActionName: InvertedRexyInput/SwitchInputLayout[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9035fd63-6923-430a-bf3b-831a9e20ec50
+    m_ActionName: InvertedRexyInput/Pause[/Mouse/middleButton,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: RexyInput

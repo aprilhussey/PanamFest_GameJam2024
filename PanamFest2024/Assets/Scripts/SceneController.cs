@@ -58,7 +58,7 @@ public class SceneController : MonoBehaviour
 			optionsMenuCanvas.SetActive(false);
 		}
 
-		if (scene.name == "Loading" || scene.name == "Credits"  || scene.name == "Credits")
+		if (scene.name == "Loading")
 		{
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
@@ -76,6 +76,8 @@ public class SceneController : MonoBehaviour
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+
+			GameManager.Instance.PlayerScore = 0;
 		}
 
 		if (scene.name == "Level001")
@@ -91,6 +93,16 @@ public class SceneController : MonoBehaviour
 		}
 
 		if (scene.name == "ScoreScreen")
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+
+			mainMenuCanvas.SetActive(false);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+		}
+
+		if (scene.name == "Credits")
 		{
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;

@@ -1,14 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class TutorialObjectives : MonoBehaviour
 {
-    [SerializeField] GameObject ObjectiveOne;
+    [SerializeField]
+    private GameObject lookUpDown;
+	[SerializeField]
+	private GameObject lookLeftRight;
+	[SerializeField]
+	private GameObject zoom;
+	[SerializeField]
+	private GameObject shoot;
+
+	[SerializeField]
+	private GameObject tutorialComplete;
+
+    private PlayerController playerController;
+    private Vector2 playerLookInput;
+
+    void Awake()
+    {
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
+
+    void Start()
+    {
+        Enable(lookUpDown);
+    }
+
+    void Update()
+    {
+        playerLookInput = playerController.lookInput;
+
+        Debug.Log($"lookInput: {playerLookInput}");
+    }
+
+    private void Enable(GameObject objective)
+    {
+        objective.SetActive(true);
+    }
+
+	private void Disable(GameObject objective)
+	{
+		objective.SetActive(true);
+	}
+
+	/*[SerializeField] GameObject ObjectiveOne;
     [SerializeField] GameObject ObjectiveTwo;
     [SerializeField] GameObject ObjectiveThree;
     [SerializeField] GameObject ObjectiveFour;
@@ -33,30 +69,30 @@ public class TutorialObjectives : MonoBehaviour
             if (CurrentObjective == 0)
             {
                 ObjectiveOne.SetActive(true);
-                ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(false);
+                ObjectiveTwo.SetActive(false);
+                ObjectiveThree.SetActive(false);
+                ObjectiveFour.SetActive(false);
             }
             else if (CurrentObjective == 1)
             {
                 ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(true);
-                ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(false);
+                ObjectiveTwo.SetActive(true);
+                ObjectiveThree.SetActive(false);
+                ObjectiveFour.SetActive(false);
             }
             else if (CurrentObjective == 2)
             {
                 ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(true);
-                ObjectiveOne.SetActive(false);
+                ObjectiveTwo.SetActive(false);
+                ObjectiveThree.SetActive(true);
+                ObjectiveFour.SetActive(false);
             }
             else if (CurrentObjective == 3)
             {
                 ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(false);
-                ObjectiveOne.SetActive(true);
+                ObjectiveTwo.SetActive(false);
+                ObjectiveThree.SetActive(false);
+                ObjectiveFour.SetActive(true);
             }
 
             ObjectiveCriteria();
@@ -90,5 +126,5 @@ public class TutorialObjectives : MonoBehaviour
             CurrentObjective += 1;
             TimeRemaining = Timer;
         }
-    }
+    }*/
 }
