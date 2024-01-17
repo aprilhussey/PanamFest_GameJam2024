@@ -209,6 +209,8 @@ public class PlayerController : MonoBehaviour
 
 					mainCrosshair.SetActive(false);
 					aimCrosshair.SetActive(true);
+
+					AudioManager.Instance.Play("Scope_In");
 				}
 				else if (aimVirtualCamera.gameObject.activeInHierarchy)
 				{
@@ -217,6 +219,8 @@ public class PlayerController : MonoBehaviour
 
 					mainCrosshair.SetActive(true);
 					aimCrosshair.SetActive(false);
+
+					AudioManager.Instance.Play("Scope_Out");
 				}
 			}
 		}

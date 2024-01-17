@@ -3791,7 +3791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 186296989}
-  remainingTime: 5
+  remainingTime: 120
   sceneName: ScoreScreen
 --- !u!114 &990678636
 MonoBehaviour:
