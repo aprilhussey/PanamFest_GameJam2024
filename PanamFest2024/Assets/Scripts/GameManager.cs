@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Scores applied when landing a hit
-    // Standard body shot
-    [Tooltip("The score added for a body shot")]
+	public static GameManager Instance;
+
+	// Scores applied when landing a hit
+	// Standard body shot
+	[Tooltip("The score added for a body shot")]
     public int NormalScore;
 
     // Headshot/Critical strike
@@ -40,8 +42,21 @@ public class GameManager : MonoBehaviour
     PlayerPrefs InvertControls;
     PlayerPrefs FlipWheels;
 
-    // Start is called before the first frame update
-    void Start()
+	void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
         
     }

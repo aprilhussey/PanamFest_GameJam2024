@@ -10,6 +10,13 @@ public class SceneController : MonoBehaviour
 	[SerializeField]
 	private UnityEngine.Object loadingScene;
 
+	[SerializeField]
+	private GameObject mainMenuCanvas;
+	[SerializeField]
+	private GameObject pauseMenuCanvas;
+	[SerializeField]
+	private GameObject optionsMenuCanvas;
+
 	void Awake()
 	{
 		if (Instance == null)
@@ -20,6 +27,33 @@ public class SceneController : MonoBehaviour
 		else
 		{
 			Destroy(gameObject);
+		}
+	}
+
+	private void OnEnable()
+	{
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+	private void OnDisable()
+	{
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
+
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		if (scene.name == "MainMenu")
+		{
+			mainMenuCanvas.SetActive(true);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+		}
+
+		if (scene.name == "Loading" || scene.name == "Credits" || scene.name == "Level001" || scene.name == "Credits")
+		{
+			mainMenuCanvas.SetActive(false);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
 		}
 	}
 
