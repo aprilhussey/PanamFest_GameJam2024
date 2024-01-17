@@ -22,14 +22,31 @@ public class SceneChange : MonoBehaviour
 
     public void OnClick()
     {
-        SceneManager.LoadScene(LoadingScene);
-        StartCoroutine(LoadNextScene());
+        if (LoadingScene != null)
+        {
+            SceneManager.LoadScene(LoadingScene);
+        }
+        if (NextScene != null)
+        {
+            StartCoroutine(LoadNextScene());
+        }
     }
 
     public void OnLoadScene()
     {
-        SceneManager.LoadScene(LoadingScene);
-        StartCoroutine(LoadNextScene());
+		if (LoadingScene != null)
+		{
+			SceneManager.LoadScene(LoadingScene);
+		}
+        if (NextScene != null)
+        {
+            StartCoroutine(LoadNextScene());
+        }
+    }
+
+    public void OnQuit()
+    {
+        Application.Quit();
     }
 
 }
