@@ -5,19 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BuildLevels/MainMenu.unity
     guid: c342df33c80cd624a92b7c3fa5e0c530
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BuildLevels/Tutorial.unity
     guid: b82aa295478464347b591a76d96de924
   - enabled: 1
     path: Assets/Scenes/BuildLevels/Level001.unity
     guid: 01f62796c8601b64ba6fd9b8f6905434
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BuildLevels/Credits.unity
     guid: 81b4ccb05a8d8db46bea416d52a1f630
   - enabled: 1
     path: Assets/Scenes/BuildLevels/ScoreScreen.unity
     guid: e6cdc31ca83539b4d83747df9acf8606
+  - enabled: 1
+    path: Assets/Scenes/BuildLevels/Loading.unity
+    guid: 0a1c2e64b445ec1499934ee72fe1360a
   m_configObjects: {}
