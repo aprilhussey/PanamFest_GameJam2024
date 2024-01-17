@@ -1,14 +1,20 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Scoring : MonoBehaviour
 {
-    [SerializeField] GameManager GameManager;
+    GameObject GameManager;
 
     [Tooltip("The crit box attatched to the enemy")]
     [SerializeField] GameObject CritHitBox;
 
     [Tooltip("The body attached to the enemy")]
     [SerializeField] GameObject BodyHitBox;
+
+    private void Awake()
+    {
+        GameManager = GameObject.Find("GameManager");
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,16 +23,17 @@ public class Scoring : MonoBehaviour
         {
             if (CritHitBox == null)
             {
-                GameManager.PlayerScore += GameManager.CritScore;
+                GameManager.GetComponent<GameManager>().PlayerScore += GameManager.GetComponent<GameManager>().CritScore;
             }
 
             else if (BodyHitBox == null)
             {
-                GameManager.PlayerScore += GameManager.NormalScore;
+                GameManager.GetComponent<GameManager>().PlayerScore += GameManager.GetComponent<GameManager>().NormalScore;
             }
 
             Destroy(this.gameObject);
 
         }
     }
+
 }
