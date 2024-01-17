@@ -25,5 +25,6 @@ public class Score : MonoBehaviour
     void Update()
     {
         score = GameManager.Instance.PlayerScore;
+        scoreText.text = score.ToString();
     }
 }
