@@ -62,6 +62,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""91827094-652e-41b4-a44e-0fba57ddebd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,28 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchInputLayout"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05c4ae5d-615f-4f7d-8359-b7c03ca0a09c"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fad7b07-ae38-48d4-bb0d-a9ca7654cf89"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -190,6 +221,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""SwitchInputLayout"",
                     ""type"": ""Button"",
                     ""id"": ""c672b972-d5e0-4c29-ae26-a474678d871f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9035fd63-6923-430a-bf3b-831a9e20ec50"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -284,6 +324,28 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchInputLayout"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2620cad-77cc-45c8-aab3-86091f3b6fc5"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76aea253-bebd-4892-9ddb-4552459dbded"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -296,12 +358,14 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_RexyInput_Aim = m_RexyInput.FindAction("Aim", throwIfNotFound: true);
         m_RexyInput_Shoot = m_RexyInput.FindAction("Shoot", throwIfNotFound: true);
         m_RexyInput_SwitchInputLayout = m_RexyInput.FindAction("SwitchInputLayout", throwIfNotFound: true);
+        m_RexyInput_Pause = m_RexyInput.FindAction("Pause", throwIfNotFound: true);
         // InvertedRexyInput
         m_InvertedRexyInput = asset.FindActionMap("InvertedRexyInput", throwIfNotFound: true);
         m_InvertedRexyInput_Look = m_InvertedRexyInput.FindAction("Look", throwIfNotFound: true);
         m_InvertedRexyInput_Aim = m_InvertedRexyInput.FindAction("Aim", throwIfNotFound: true);
         m_InvertedRexyInput_Shoot = m_InvertedRexyInput.FindAction("Shoot", throwIfNotFound: true);
         m_InvertedRexyInput_SwitchInputLayout = m_InvertedRexyInput.FindAction("SwitchInputLayout", throwIfNotFound: true);
+        m_InvertedRexyInput_Pause = m_InvertedRexyInput.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -367,6 +431,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_RexyInput_Aim;
     private readonly InputAction m_RexyInput_Shoot;
     private readonly InputAction m_RexyInput_SwitchInputLayout;
+    private readonly InputAction m_RexyInput_Pause;
     public struct RexyInputActions
     {
         private @InputSystem m_Wrapper;
@@ -375,6 +440,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_RexyInput_Aim;
         public InputAction @Shoot => m_Wrapper.m_RexyInput_Shoot;
         public InputAction @SwitchInputLayout => m_Wrapper.m_RexyInput_SwitchInputLayout;
+        public InputAction @Pause => m_Wrapper.m_RexyInput_Pause;
         public InputActionMap Get() { return m_Wrapper.m_RexyInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -396,6 +462,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @SwitchInputLayout.started += instance.OnSwitchInputLayout;
             @SwitchInputLayout.performed += instance.OnSwitchInputLayout;
             @SwitchInputLayout.canceled += instance.OnSwitchInputLayout;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IRexyInputActions instance)
@@ -412,6 +481,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @SwitchInputLayout.started -= instance.OnSwitchInputLayout;
             @SwitchInputLayout.performed -= instance.OnSwitchInputLayout;
             @SwitchInputLayout.canceled -= instance.OnSwitchInputLayout;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IRexyInputActions instance)
@@ -437,6 +509,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_InvertedRexyInput_Aim;
     private readonly InputAction m_InvertedRexyInput_Shoot;
     private readonly InputAction m_InvertedRexyInput_SwitchInputLayout;
+    private readonly InputAction m_InvertedRexyInput_Pause;
     public struct InvertedRexyInputActions
     {
         private @InputSystem m_Wrapper;
@@ -445,6 +518,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_InvertedRexyInput_Aim;
         public InputAction @Shoot => m_Wrapper.m_InvertedRexyInput_Shoot;
         public InputAction @SwitchInputLayout => m_Wrapper.m_InvertedRexyInput_SwitchInputLayout;
+        public InputAction @Pause => m_Wrapper.m_InvertedRexyInput_Pause;
         public InputActionMap Get() { return m_Wrapper.m_InvertedRexyInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +540,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @SwitchInputLayout.started += instance.OnSwitchInputLayout;
             @SwitchInputLayout.performed += instance.OnSwitchInputLayout;
             @SwitchInputLayout.canceled += instance.OnSwitchInputLayout;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IInvertedRexyInputActions instance)
@@ -482,6 +559,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @SwitchInputLayout.started -= instance.OnSwitchInputLayout;
             @SwitchInputLayout.performed -= instance.OnSwitchInputLayout;
             @SwitchInputLayout.canceled -= instance.OnSwitchInputLayout;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IInvertedRexyInputActions instance)
@@ -505,6 +585,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnSwitchInputLayout(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IInvertedRexyInputActions
     {
@@ -512,5 +593,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnSwitchInputLayout(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
