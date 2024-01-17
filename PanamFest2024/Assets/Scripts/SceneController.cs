@@ -68,7 +68,17 @@ public class SceneController : MonoBehaviour
 			optionsMenuCanvas.SetActive(false);
 		}
 
-		if (scene.name == "Tutorial" || scene.name == "Level001")
+		if (scene.name == "Tutorial")
+		{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+
+			mainMenuCanvas.SetActive(false);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+		}
+
+		if (scene.name == "Level001")
 		{
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
@@ -77,7 +87,7 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 
-			//GameManager.Instance.InputMapping = GameObject.FindWithTag("Player").GetComponent<InputMapping>();
+			GameManager.Instance.PlayerScore = 0;
 		}
 
 		if (scene.name == "ScoreScreen")
