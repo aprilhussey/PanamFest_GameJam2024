@@ -30,6 +30,7 @@ public class TutorialEnemyComplete : MonoBehaviour
             shootText.SetActive(false);
             mainCrosshair.SetActive(false);
             aimCrosshair.SetActive(false);
+            
         }
     }
 
