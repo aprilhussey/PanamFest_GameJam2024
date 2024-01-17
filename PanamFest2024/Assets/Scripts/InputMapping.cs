@@ -10,6 +10,8 @@ public class InputMapping : MonoBehaviour
     InputActionMap RexyInput;
     InputActionMap InvertedRexyInput;
 
+    public bool FlippedWheels;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,11 @@ public class InputMapping : MonoBehaviour
 
         RexyInput = InputSystem.currentActionMap = InputSystem.actions.FindActionMap("RexyInput");
         InvertedRexyInput = InputSystem.currentActionMap = InputSystem.actions.FindActionMap("InvertedRexyInput");
+
+        RexyInput.Enable();
+        InvertedRexyInput.Disable();
+
+        FlippedWheels = false;
     }
 
     // Update is called once per frame
@@ -35,6 +42,8 @@ public class InputMapping : MonoBehaviour
 
             RexyInput.Enable();
             InvertedRexyInput.Disable();
+
+            FlippedWheels = false;
         }
         else if (!InvertedRexyInput.enabled)
         {
@@ -42,6 +51,8 @@ public class InputMapping : MonoBehaviour
 
             RexyInput.Disable();
             InvertedRexyInput.Enable();
+
+            FlippedWheels = true;
         }
     }
 }

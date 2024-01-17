@@ -526,6 +526,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759782554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759782556}
+  - component: {fileID: 759782555}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &759782555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759782554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da521064055c0b644b68e0787ab15b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 1473b1645acb07a428852fdbd903b08b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Menu_Select
+    clip: {fileID: 8300000, guid: 27c5bd4b0b9a04f4b900d0cc56fe856d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Menu_Scroll
+    clip: {fileID: 8300000, guid: 667a0b6a44b46b143b7be24040858b18, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Menu_Cancel
+    clip: {fileID: 8300000, guid: 43c794146bab4424ea1d8895745f1abb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SniperLaser_Shoot
+    clip: {fileID: 8300000, guid: 83abfe8e645422d45b1e797331013dc9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SniperLaser_Impact
+    clip: {fileID: 8300000, guid: 1423736be3d30a24e9acd65626e14b4d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SniperLaser_CriticalHit
+    clip: {fileID: 8300000, guid: 22d05eb27b48f4f4bb19cc79dac61bb9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &759782556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759782554}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &805700878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1945,9 +2032,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbbf0fbf91453a4cb445b28af8e448d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inverted: 0
   cameraTarget: {fileID: 6034158574957000129}
   aimVirtualCamera: {fileID: 6568128847966947962}
   weaponRange: 150
+  projectileSpeed: 30
   debugTransform: {fileID: 8659582775247735330}
   cameraMainSensitivity: 10
   cameraAimSensitivity: 5
@@ -2098,6 +2187,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2010868204}
+  - {fileID: 759782556}
   - {fileID: 577396591}
   - {fileID: 1979119690}
   - {fileID: 1600223791}
