@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	private Vector2 lookInput;
 
 	[SerializeField]
-	bool Inverted;
+	public bool Inverted;
 
 	[Header("Camera")]
 	[SerializeField]

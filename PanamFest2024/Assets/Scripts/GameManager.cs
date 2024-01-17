@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +20,30 @@ public class GameManager : MonoBehaviour
     [Tooltip("The players total score (shoudln't need touching)")]
     public int PlayerScore;
 
+    // Setting/Options objects
+    [Tooltip("This will be found in the options/setting page")]
+    [SerializeField] GameObject VolumeSlider;
 
+    [Tooltip("")]
+    [SerializeField] GameObject InvertedControlsToggle;
+
+    [Tooltip("")]
+    [SerializeField] GameObject InputMappingToggle;
+
+    // In-game scripts
+    [Tooltip("")]
+    [SerializeField] AudioManager AudioManager;
+
+    [Tooltip("")]
+    [SerializeField] InputMapping InputMapping;
+
+    [Tooltip("")]
+    [SerializeField] PlayerController PlayerController;
+
+    // Player Prefs
+    PlayerPrefs Volume;
+    PlayerPrefs InvertControls;
+    PlayerPrefs FlipWheels;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +54,55 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PlayerPrefs.SetFloat("Volume", VolumeSlider.GetComponent<UnityEngine.UI.Slider>().value);
+
+        if (InvertedControlsToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == true)
+        {
+            PlayerPrefs.SetInt("InvertedControls", 1);
+        }
+        else if (InvertedControlsToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == false)
+        {
+            PlayerPrefs.SetInt("InvertedControls", 0);
+        }
+
+        if (InputMappingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == true)
+        {
+            PlayerPrefs.SetInt("FlipWheels", 1);
+        }
+        else if (InputMappingToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == false)
+        {
+            PlayerPrefs.SetInt("FlipWheels", 0);
+        }
+
+        // Assigning PlayerPrefs
+        if (AudioManager != null)
+        {
+            //[Insert line to adjust audio volume based on the PLayerPref "Volume"]
+        }
+
+        if (InputMapping != null)
+        {
+            if (PlayerPrefs.GetInt("FlipWheels") == 1)
+            {
+                InputMapping.OnSwitchInputLayout();
+            }
+            else if (PlayerPrefs.GetInt("FlipWheels") == 0)
+            {
+                InputMapping.OnSwitchInputLayout();
+            }
+        }
+
+        if (PlayerController != null)
+        {
+            if (PlayerPrefs.GetInt("InvertedControls") == 1)
+            {
+                PlayerController.Inverted = true;
+            }
+            else if (PlayerPrefs.GetInt("InvertedControls") == 0)
+            {
+                PlayerController.Inverted = false;
+            }
+        }
     }
 
 }
