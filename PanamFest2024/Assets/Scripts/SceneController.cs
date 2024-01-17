@@ -13,8 +13,12 @@ public class SceneController : MonoBehaviour
 	private GameObject mainMenuCanvas;
 	public GameObject pauseMenuCanvas;
 	public GameObject optionsMenuCanvas;
+	public GameObject tutorialCompleteCanvas;
+	public GameObject tutorialPauseMenuCanvas;
 
 	private Scene currentScene;
+
+	private PlayerController playerController;
 
 	void Awake()
 	{
@@ -56,6 +60,7 @@ public class SceneController : MonoBehaviour
 			mainMenuCanvas.SetActive(true);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
 		}
 
 		if (scene.name == "Loading")
@@ -66,30 +71,41 @@ public class SceneController : MonoBehaviour
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
 		}
 
 		if (scene.name == "Tutorial")
 		{
+			Time.timeScale = 1f;
+
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
 
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
 
 			GameManager.Instance.PlayerScore = 0;
+
+			playerController.pauseMenuCanvas = tutorialPauseMenuCanvas;
 		}
 
 		if (scene.name == "Level001")
 		{
+			Time.timeScale = 1f;
+
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
 
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
 
 			GameManager.Instance.PlayerScore = 0;
+
+			playerController.pauseMenuCanvas = pauseMenuCanvas;
 		}
 
 		if (scene.name == "ScoreScreen")
@@ -100,6 +116,7 @@ public class SceneController : MonoBehaviour
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
 		}
 
 		if (scene.name == "Credits")
@@ -110,6 +127,7 @@ public class SceneController : MonoBehaviour
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
 		}
 	}
 
@@ -117,9 +135,20 @@ public class SceneController : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 
+		tutorialPauseMenuCanvas.SetActive(false);
 		pauseMenuCanvas.SetActive(false);
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	public void OnContinueTutorialButtonClick()
+	{
+		Time.timeScale = 1f;
+
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+
+		tutorialCompleteCanvas.SetActive(false);
 	}
 
 	public void OnBackButtonClick()

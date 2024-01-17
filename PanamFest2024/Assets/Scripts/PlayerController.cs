@@ -65,23 +65,9 @@ public class PlayerController : MonoBehaviour
 	public float cooldownTimer = 0;
 
 	[Header("Canvases")]
-	private GameObject pauseMenuCanvas;
+	public GameObject pauseMenuCanvas;
 	private GameObject optionsMenuCanvas;
-
-	[SerializeField]
-	private InputAction pauseAction;
-
-	void OnEnable()
-	{
-		pauseAction.performed += OnPausePerformed;
-		pauseAction.Enable();
-	}
-
-	void OnDisable()
-	{
-		pauseAction.performed -= OnPausePerformed;
-		pauseAction.Disable();
-	}
+	private GameObject tutorialCompleteCanvas;
 
 	void Awake()
 	{
@@ -99,13 +85,14 @@ public class PlayerController : MonoBehaviour
 		mainCrosshair.SetActive(true);
 		aimCrosshair.SetActive(false);
 
-		pauseMenuCanvas = SceneController.Instance.pauseMenuCanvas;
+		pauseMenuCanvas = SceneController.Instance.tutorialPauseMenuCanvas;
 		optionsMenuCanvas = SceneController.Instance.optionsMenuCanvas;
+		tutorialCompleteCanvas = SceneController.Instance.tutorialCompleteCanvas;
 	}
 
 	void Update()
 	{
-		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy && !tutorialCompleteCanvas.activeInHierarchy)
 		{
 			// LOOK //
 			// Keep track of current rotation
@@ -142,7 +129,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void OnPausePerformed(InputAction.CallbackContext context)
+	public void OnPause(InputAction.CallbackContext context)
 	{
 		if (!pauseMenuCanvas.activeInHierarchy)
 		{
@@ -164,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
 	public void OnLook(InputAction.CallbackContext context)
 	{
-		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy && !tutorialCompleteCanvas.activeInHierarchy)
 		{
 			if (!Inverted)
 			{
@@ -201,7 +188,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (context.action.triggered)
 		{
-			if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
+			if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy && !tutorialCompleteCanvas.activeInHierarchy)
 			{
 				if (!aimVirtualCamera.gameObject.activeInHierarchy)
 				{
@@ -229,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
-		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy && !tutorialCompleteCanvas.activeInHierarchy)
 		{
 			if (cooldownTimer <= 0) // If not in cooldown
 			{

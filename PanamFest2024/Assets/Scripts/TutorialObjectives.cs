@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class TutorialObjectives : MonoBehaviour
 {
-    [SerializeField]
+	[SerializeField]
     private GameObject lookUpDown;
 	[SerializeField]
 	private GameObject lookLeftRight;
 	[SerializeField]
-	private GameObject zoom;
+	private GameObject scope;
 	[SerializeField]
 	private GameObject shoot;
 
-	[SerializeField]
-	private GameObject tutorialComplete;
+	private GameObject tutorialCompleteCanvas;
 
     private PlayerController playerController;
     private Vector2 playerLookInput;
@@ -20,7 +19,8 @@ public class TutorialObjectives : MonoBehaviour
     void Awake()
     {
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-    }
+		tutorialCompleteCanvas = SceneController.Instance.tutorialCompleteCanvas;
+	}
 
     void Start()
     {
@@ -32,99 +32,53 @@ public class TutorialObjectives : MonoBehaviour
         playerLookInput = playerController.lookInput;
 
         Debug.Log($"lookInput: {playerLookInput}");
+
+        if (playerLookInput.y != 0 && lookUpDown.activeInHierarchy)
+        {
+            Disable(lookUpDown);
+            Enable(lookLeftRight);
+        }
+
+		if (playerLookInput.x != 0 && lookLeftRight.activeInHierarchy)
+		{
+			Disable(lookLeftRight);
+			Enable(scope);
+		}
+
+        if (tutorialCompleteCanvas.activeInHierarchy)
+        {
+			Time.timeScale = 0f;
+
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+		}
+	}
+
+    public void OnScopeTutorialDone()
+    {
+        if (scope.activeInHierarchy)
+        {
+            Disable(scope);
+            Enable(shoot);
+        }
     }
 
-    private void Enable(GameObject objective)
+	public void OnShootTutorialDone()
+	{
+		if (shoot.activeInHierarchy)
+		{
+			Disable(shoot);
+			Enable(tutorialCompleteCanvas);
+		}
+	}
+
+	private void Enable(GameObject objective)
     {
         objective.SetActive(true);
     }
 
 	private void Disable(GameObject objective)
 	{
-		objective.SetActive(true);
+		objective.SetActive(false);
 	}
-
-	/*[SerializeField] GameObject ObjectiveOne;
-    [SerializeField] GameObject ObjectiveTwo;
-    [SerializeField] GameObject ObjectiveThree;
-    [SerializeField] GameObject ObjectiveFour;
-
-    int CurrentObjective;
-
-    [SerializeField] float Timer;
-    float TimeRemaining;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        CurrentObjective = 0;
-        TimeRemaining = Timer;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (TimeRemaining <= 0)
-        {
-            if (CurrentObjective == 0)
-            {
-                ObjectiveOne.SetActive(true);
-                ObjectiveTwo.SetActive(false);
-                ObjectiveThree.SetActive(false);
-                ObjectiveFour.SetActive(false);
-            }
-            else if (CurrentObjective == 1)
-            {
-                ObjectiveOne.SetActive(false);
-                ObjectiveTwo.SetActive(true);
-                ObjectiveThree.SetActive(false);
-                ObjectiveFour.SetActive(false);
-            }
-            else if (CurrentObjective == 2)
-            {
-                ObjectiveOne.SetActive(false);
-                ObjectiveTwo.SetActive(false);
-                ObjectiveThree.SetActive(true);
-                ObjectiveFour.SetActive(false);
-            }
-            else if (CurrentObjective == 3)
-            {
-                ObjectiveOne.SetActive(false);
-                ObjectiveTwo.SetActive(false);
-                ObjectiveThree.SetActive(false);
-                ObjectiveFour.SetActive(true);
-            }
-
-            ObjectiveCriteria();
-        }
-
-        
-    }
-
-    public void ObjectiveCriteria()
-    {
-        if (Input.GetAxis("Horizontal") > 0.1 || Input.GetAxis("Horizontal") < -0.1)
-        {
-            CurrentObjective += 1;
-            TimeRemaining = Timer;
-        }
-        
-        else if ((Input.GetAxis("Vertacle") > 0.1 && CurrentObjective == 1) || (Input.GetAxis("Vertacle") < -0.1 && CurrentObjective == 1))
-        {
-            CurrentObjective += 1;
-            TimeRemaining = Timer;
-        }
-
-        else if ((Input.GetButtonDown("MouseLeft") && CurrentObjective == 2))
-        {
-            CurrentObjective += 1;
-            TimeRemaining = Timer;
-        }
-
-        else if ((Input.GetButtonDown("MouseRight") && CurrentObjective == 3))
-        {
-            CurrentObjective += 1;
-            TimeRemaining = Timer;
-        }
-    }*/
 }
