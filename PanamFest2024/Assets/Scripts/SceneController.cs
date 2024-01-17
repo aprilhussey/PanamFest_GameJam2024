@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,10 +11,10 @@ public class SceneController : MonoBehaviour
 
 	[SerializeField]
 	private GameObject mainMenuCanvas;
-	[SerializeField]
-	private GameObject pauseMenuCanvas;
-	[SerializeField]
-	private GameObject optionsMenuCanvas;
+	public GameObject pauseMenuCanvas;
+	public GameObject optionsMenuCanvas;
+
+	private Scene currentScene;
 
 	void Awake()
 	{
@@ -28,6 +27,13 @@ public class SceneController : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		currentScene = SceneManager.GetActiveScene();
+	}
+
+	void Update()
+	{
+		currentScene = SceneManager.GetActiveScene();
 	}
 
 	private void OnEnable()
@@ -44,15 +50,44 @@ public class SceneController : MonoBehaviour
 	{
 		if (scene.name == "MainMenu")
 		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+
 			mainMenuCanvas.SetActive(true);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 		}
 
-		if (scene.name == "Loading" || scene.name == "Credits" || scene.name == "Level001" || scene.name == "Credits")
+		if (scene.name == "Loading" || scene.name == "Credits"  || scene.name == "Level001" || scene.name == "Credits")
 		{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+		}
+	}
+
+	public void OnResumeButtonClick()
+	{
+		Time.timeScale = 1f;
+
+		pauseMenuCanvas.SetActive(false);
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	public void OnBackButtonClick()
+	{
+		if (currentScene.name == "Tutorial" || currentScene.name == "Level001")
+		{
+			pauseMenuCanvas.SetActive(true);
+			optionsMenuCanvas.SetActive(false);
+		}
+		if (currentScene.name == "MainMenu")
+		{
+			mainMenuCanvas.SetActive(true);
 			optionsMenuCanvas.SetActive(false);
 		}
 	}

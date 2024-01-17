@@ -63,6 +63,25 @@ public class PlayerController : MonoBehaviour
 	private float cooldownTime = .5f;
 	private float cooldownTimer = 0;
 
+	[Header("Canvases")]
+	private GameObject pauseMenuCanvas;
+	private GameObject optionsMenuCanvas;
+
+	[SerializeField]
+	private InputAction pauseAction;
+
+	void OnEnable()
+	{
+		pauseAction.performed += OnPausePerformed;
+		pauseAction.Enable();
+	}
+
+	void OnDisable()
+	{
+		pauseAction.performed -= OnPausePerformed;
+		pauseAction.Disable();
+	}
+
 	void Awake()
 	{
 		Cursor.visible = false;
@@ -78,126 +97,163 @@ public class PlayerController : MonoBehaviour
 
 		mainCrosshair.SetActive(true);
 		aimCrosshair.SetActive(false);
+
+		pauseMenuCanvas = SceneController.Instance.pauseMenuCanvas;
+		optionsMenuCanvas = SceneController.Instance.optionsMenuCanvas;
 	}
 
 	void Update()
 	{
-		// LOOK //
-		// Keep track of current rotation
-		float verticalRotation = cameraTarget.transform.localEulerAngles.x;
-
-		// Rotate the player and camera based on lookInput
-		if (lookInput != Vector2.zero)
+		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
 		{
-			// Calculate new rotation
-			float newVerticalRotation = verticalRotation - lookInput.y * cameraSensitivity;
+			// LOOK //
+			// Keep track of current rotation
+			float verticalRotation = cameraTarget.transform.localEulerAngles.x;
 
-			// Adjust for 360 degree system
-			if (newVerticalRotation > 180)
+			// Rotate the player and camera based on lookInput
+			if (lookInput != Vector2.zero)
 			{
-				newVerticalRotation -= 360;
+				// Calculate new rotation
+				float newVerticalRotation = verticalRotation - lookInput.y * cameraSensitivity;
+
+				// Adjust for 360 degree system
+				if (newVerticalRotation > 180)
+				{
+					newVerticalRotation -= 360;
+				}
+
+				// Clamp rotation to min and max angles
+				verticalRotation = Mathf.Clamp(newVerticalRotation, minVerticalRotation, maxVerticalRotation);
+
+				// Apply rotation
+				cameraTarget.transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
+				this.transform.Rotate(Vector3.up, lookInput.x * cameraSensitivity);
 			}
 
-			// Clamp rotation to min and max angles
-			verticalRotation = Mathf.Clamp(newVerticalRotation, minVerticalRotation, maxVerticalRotation);
-
-			// Apply rotation
-			cameraTarget.transform.localEulerAngles = new Vector3(verticalRotation, 0, 0);
-			this.transform.Rotate(Vector3.up, lookInput.x * cameraSensitivity);
+			if (cooldownTimer > 0)  // If in cooldown
+			{
+				cooldownTimer -= Time.deltaTime;
+			}
 		}
+	}
 
-		if (cooldownTimer > 0)	// If in cooldown
+	void OnPausePerformed(InputAction.CallbackContext context)
+	{
+		if (context.action.triggered)
 		{
-			cooldownTimer -= Time.deltaTime;
+			if (!pauseMenuCanvas.activeInHierarchy)
+			{
+				Time.timeScale = 0f;
+
+				pauseMenuCanvas.SetActive(true);
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+			}
+			else if (pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy)
+			{
+				Time.timeScale = 1f;
+
+				pauseMenuCanvas.SetActive(false);
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+			}
 		}
 	}
 
 	public void OnLook(InputAction.CallbackContext context)
 	{
-		if (!Inverted)
+		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
 		{
-            if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
-            {
-                lookInput = context.ReadValue<Vector2>();
-                //Debug.Log(context.ReadValue<Vector2>());
-            }
-            else if (context.phase == InputActionPhase.Canceled)
-            {
-                lookInput = Vector2.zero;
-            }
-        }
-		else if (Inverted)
-		{
-            if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
-            {
-                lookInput = -context.ReadValue<Vector2>();
-                //Debug.Log(context.ReadValue<Vector2>());
-            }
-            else if (context.phase == InputActionPhase.Canceled)
-            {
-                lookInput = Vector2.zero;
-            }
-        }
-
+			if (!Inverted)
+			{
+				if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+				{
+					lookInput = context.ReadValue<Vector2>();
+					//Debug.Log(context.ReadValue<Vector2>());
+				}
+				else if (context.phase == InputActionPhase.Canceled)
+				{
+					lookInput = Vector2.zero;
+				}
+			}
+			else if (Inverted)
+			{
+				if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+				{
+					lookInput = -context.ReadValue<Vector2>();
+					//Debug.Log(context.ReadValue<Vector2>());
+				}
+				else if (context.phase == InputActionPhase.Canceled)
+				{
+					lookInput = Vector2.zero;
+				}
+			}
+		}
 	}
 
 	public void OnAim(InputAction.CallbackContext context)
 	{
-		if (context.action.triggered)
+		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
 		{
-			if (!aimVirtualCamera.gameObject.activeInHierarchy)
+			if (context.action.triggered)
 			{
-				cameraSensitivity = cameraAimSensitivity / 10;  // Divided by 10 to get the correct value
-				aimVirtualCamera.gameObject.SetActive(true);
+				if (!aimVirtualCamera.gameObject.activeInHierarchy)
+				{
+					cameraSensitivity = cameraAimSensitivity / 10;  // Divided by 10 to get the correct value
+					aimVirtualCamera.gameObject.SetActive(true);
 
-				mainCrosshair.SetActive(false);
-				aimCrosshair.SetActive(true);
-			}
-			else
-			{
-				cameraSensitivity = cameraMainSensitivity / 10;   // Divided by 10 to get the correct value
-				aimVirtualCamera.gameObject.SetActive(false);
+					mainCrosshair.SetActive(false);
+					aimCrosshair.SetActive(true);
+				}
+				else if (aimVirtualCamera.gameObject.activeInHierarchy)
+				{
+					cameraSensitivity = cameraMainSensitivity / 10;   // Divided by 10 to get the correct value
+					aimVirtualCamera.gameObject.SetActive(false);
 
-				mainCrosshair.SetActive(true);
-				aimCrosshair.SetActive(false);
+					mainCrosshair.SetActive(true);
+					aimCrosshair.SetActive(false);
+				}
 			}
 		}
 	}
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
-		if (cooldownTimer <= 0)	// If not in cooldown
+		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
 		{
-			if (!context.performed)
+			if (cooldownTimer <= 0) // If not in cooldown
 			{
-				return;
+				if (!context.performed)
+				{
+					return;
+				}
+
+				Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+
+				Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+
+				if (Physics.Raycast(ray, out RaycastHit raycastHit, raycastRange))
+				{
+					hitDistance = raycastHit.distance;
+
+					debugTransform.position = raycastHit.point;
+					mouseWorldPosition = raycastHit.point;
+					hitTransform = raycastHit.transform;
+				}
+				else    // Manually set distance of raycast
+				{
+					hitDistance = raycastHit.distance;
+
+					debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
+					mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
+					hitTransform = raycastHit.transform;
+				}
+
+				cooldownTimer = cooldownTime;
+
+				AudioManager.Instance.Play("SniperLaser_Shoot");
+				StartCoroutine(HitTransform());
 			}
-
-			Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-
-			Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-
-			if (Physics.Raycast(ray, out RaycastHit raycastHit, raycastRange))
-			{
-				hitDistance = raycastHit.distance;
-
-				debugTransform.position = raycastHit.point;
-				mouseWorldPosition = raycastHit.point;
-				hitTransform = raycastHit.transform;
-			}
-			else    // Manually set distance of raycast
-			{
-				hitDistance = raycastHit.distance;
-
-				debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
-				mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
-				hitTransform = raycastHit.transform;
-			}
-
-			cooldownTimer = cooldownTime;
-
-			AudioManager.Instance.Play("SniperLaser_Shoot");
-			StartCoroutine(HitTransform());
 		}
 	}
 
