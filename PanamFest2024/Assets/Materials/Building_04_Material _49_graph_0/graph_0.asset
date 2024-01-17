@@ -129,7 +129,7 @@ MonoBehaviour:
   OutputMaterial: {fileID: 2100000, guid: 4310b1189656c4b4892dd6c8188de377, type: 2}
   DefaultPreset: " <sbspreset pkgurl=\"pkg://Building_04_Material__48\" label=\"\"
     >\n </sbspreset>\n"
-  MaterialShader: Standard
+  MaterialShader: Universal Render Pipeline/Lit
   RenderTextures: 0
   OutputRemaped: 0
   Presets: []
