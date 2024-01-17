@@ -58,7 +58,7 @@ public class SceneController : MonoBehaviour
 			optionsMenuCanvas.SetActive(false);
 		}
 
-		if (scene.name == "Loading" || scene.name == "Credits"  || scene.name == "Level001" || scene.name == "Credits")
+		if (scene.name == "Loading" || scene.name == "Credits"  || scene.name == "Credits")
 		{
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
@@ -66,6 +66,18 @@ public class SceneController : MonoBehaviour
 			mainMenuCanvas.SetActive(false);
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
+		}
+
+		if (scene.name == "Tutorial" || scene.name == "Level001")
+		{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+
+			mainMenuCanvas.SetActive(false);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+
+			//GameManager.Instance.InputMapping = GameObject.FindWithTag("Player").GetComponent<InputMapping>();
 		}
 	}
 

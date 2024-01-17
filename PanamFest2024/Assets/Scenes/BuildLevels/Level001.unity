@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -707,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.51
@@ -1352,59 +1352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &247097146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 247097148}
-  - component: {fileID: 247097147}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &247097147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247097146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4156b177e4014e4bad11c231d7d0cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NormalScore: 500
-  CritScore: 900
-  PlayerScore: 0
-  VolumeSlider: {fileID: 0}
-  InvertedControlsToggle: {fileID: 0}
-  InputMappingToggle: {fileID: 0}
-  AudioManager: {fileID: 819770113}
-  InputMapping: {fileID: 2049725258}
-  PlayerController: {fileID: 2049725256}
---- !u!4 &247097148
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247097146}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.833738, y: -7.3898582, z: 29.614386}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &290806473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1492,7 +1439,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.42
@@ -1617,7 +1564,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.51
@@ -2184,7 +2131,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 30
+  field of view: 65
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -2433,7 +2380,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.54
@@ -3300,93 +3247,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5051db081c5b7b4282a0d82fc67bc8f, type: 3}
---- !u!1 &819770112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 819770114}
-  - component: {fileID: 819770113}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &819770113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819770112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da521064055c0b644b68e0787ab15b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Theme
-    clip: {fileID: 8300000, guid: 0e3912838d904e84da26c5030e092de9, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Menu_Select
-    clip: {fileID: 8300000, guid: 27c5bd4b0b9a04f4b900d0cc56fe856d, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Menu_Scroll
-    clip: {fileID: 8300000, guid: 667a0b6a44b46b143b7be24040858b18, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Menu_Cancel
-    clip: {fileID: 8300000, guid: 43c794146bab4424ea1d8895745f1abb, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: SniperLaser_Shoot
-    clip: {fileID: 8300000, guid: 83abfe8e645422d45b1e797331013dc9, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: SniperLaser_Impact
-    clip: {fileID: 8300000, guid: 1423736be3d30a24e9acd65626e14b4d, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: SniperLaser_CriticalHit
-    clip: {fileID: 8300000, guid: 22d05eb27b48f4f4bb19cc79dac61bb9, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
---- !u!4 &819770114
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819770112}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &836699153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,8 +3725,9 @@ GameObject:
   - component: {fileID: 990678638}
   - component: {fileID: 990678637}
   - component: {fileID: 990678636}
+  - component: {fileID: 990678635}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: GameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3941,7 +3802,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4461,7 +4322,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.434
@@ -5049,7 +4910,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.54
@@ -5431,7 +5292,7 @@ PrefabInstance:
     - target: {fileID: 513183524021706282, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: GameManager
       value: 
-      objectReference: {fileID: 247097147}
+      objectReference: {fileID: 0}
     - target: {fileID: 1921171364827947241, guid: cc8872072a25e63429220e7e7f01b93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.54
@@ -8267,7 +8128,6 @@ SceneRoots:
   - {fileID: 990678634}
   - {fileID: 99042340}
   - {fileID: 2049725257}
-  - {fileID: 819770114}
   - {fileID: 1634932057}
   - {fileID: 1625191171}
   - {fileID: 729257981}
