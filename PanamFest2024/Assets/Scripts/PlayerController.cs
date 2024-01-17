@@ -59,9 +59,9 @@ public class PlayerController : MonoBehaviour
 	private GameObject vfxHitRed;
 
 	[Header("Cooldown")]
-	[SerializeField]
-	private float cooldownTime = .5f;
-	private float cooldownTimer = 0;
+	public float cooldownTime = .5f;
+	[HideInInspector]
+	public float cooldownTimer = 0;
 
 	void Awake()
 	{
