@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	bool Inverted;
 
+	[Header("Camera")]
 	[SerializeField]
 	private GameObject cameraTarget;
 
@@ -18,16 +19,6 @@ public class PlayerController : MonoBehaviour
 
 	private Vector3 mouseWorldPosition = new Vector3();
 	private Vector2 screenCenterPoint = new Vector2();
-
-	[SerializeField]
-	private float weaponRange = 50f;
-	[SerializeField]
-	private float projectileSpeed = .1f;
-
-	private Transform hitTransform = null;
-	private float hitDistance;
-	[SerializeField]
-	private Transform debugTransform;
 
 	private float cameraSensitivity;
 	[SerializeField]
@@ -44,6 +35,24 @@ public class PlayerController : MonoBehaviour
 	[Tooltip("Maximum vertical rotation of the CameraTarget gameobject")]
 	float maxVerticalRotation = 80f;   // Define max rotation
 
+	[Header("Raycast")]
+	[SerializeField]
+	private float raycastRange = 200f;
+	[SerializeField]
+	private float projectileSpeed = 30f;
+
+	private Transform hitTransform = null;
+	private float hitDistance;
+	[SerializeField]
+	private Transform debugTransform;
+
+	[Header("Crosshair")]
+	[SerializeField]
+	private GameObject mainCrosshair;
+	[SerializeField]
+	private GameObject aimCrosshair;
+
+	[Header("VFX")]
 	public GameObject vfxHitGreen;
 	public GameObject vfxHitRed;
 
@@ -59,6 +68,9 @@ public class PlayerController : MonoBehaviour
 	void Start()
 	{
 		aimVirtualCamera.gameObject.SetActive(false);
+
+		mainCrosshair.SetActive(true);
+		aimCrosshair.SetActive(false);
 	}
 
 	void Update()
@@ -125,11 +137,17 @@ public class PlayerController : MonoBehaviour
 			{
 				cameraSensitivity = cameraAimSensitivity / 10;  // Divided by 10 to get the correct value
 				aimVirtualCamera.gameObject.SetActive(true);
+
+				mainCrosshair.SetActive(false);
+				aimCrosshair.SetActive(true);
 			}
 			else
 			{
 				cameraSensitivity = cameraMainSensitivity / 10;   // Divided by 10 to get the correct value
 				aimVirtualCamera.gameObject.SetActive(false);
+
+				mainCrosshair.SetActive(true);
+				aimCrosshair.SetActive(false);
 			}
 		}
 	}
@@ -145,12 +163,20 @@ public class PlayerController : MonoBehaviour
 
 		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
 
-		if (Physics.Raycast(ray, out RaycastHit raycastHit, weaponRange))
+		if (Physics.Raycast(ray, out RaycastHit raycastHit, raycastRange))
 		{
 			hitDistance = raycastHit.distance;
 
 			debugTransform.position = raycastHit.point;
 			mouseWorldPosition = raycastHit.point;
+			hitTransform = raycastHit.transform;
+		}
+		else    // Manually set distance of raycast
+		{
+			hitDistance = raycastHit.distance;
+
+			debugTransform.position = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
+			mouseWorldPosition = Camera.main.transform.position + Camera.main.transform.forward * raycastRange;
 			hitTransform = raycastHit.transform;
 		}
 
@@ -186,5 +212,11 @@ public class PlayerController : MonoBehaviour
 	{
 		float time = distance / speed;
 		return time;
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, raycastRange);
 	}
 }

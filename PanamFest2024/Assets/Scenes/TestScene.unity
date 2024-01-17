@@ -123,6 +123,43 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &238688084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238688085}
+  m_Layer: 5
+  m_Name: HUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &238688085
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238688084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 837026393}
+  - {fileID: 2094852672}
+  m_Father: {fileID: 1153880558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &280888290
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +314,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &397989974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397989975}
+  m_Layer: 0
+  m_Name: PlayerCameras
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &397989975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397989974}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1863181639623449348}
+  - {fileID: 7784692301022004018}
+  m_Father: {fileID: 6772318626989188534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460568582
 GameObject:
@@ -502,7 +572,7 @@ GameObject:
   - component: {fileID: 837026395}
   - component: {fileID: 837026394}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MainCrosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,17 +585,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837026392}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1153880558}
+  m_Father: {fileID: 238688085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 10}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837026394
 MonoBehaviour:
@@ -540,14 +610,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b66c9cda2d9811548be56eea0a4e2b40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -786,7 +856,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 837026393}
+  - {fileID: 238688085}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -906,7 +976,7 @@ Transform:
   m_GameObject: {fileID: 1383079021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.68, y: 1.46, z: 22.72}
+  m_LocalPosition: {x: 4.68, y: 7.1, z: 22.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1135,6 +1205,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf7967666d2f804189675c7d0b1d328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2094852671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094852672}
+  - component: {fileID: 2094852674}
+  - component: {fileID: 2094852673}
+  m_Layer: 5
+  m_Name: AimCrosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2094852672
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094852671}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 238688085}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2094852673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094852671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c00d5b1df8419324aab46ab9cfa697f9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2094852674
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094852671}
+  m_CullTransparentMesh: 1
 --- !u!114 &637008377437223518
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1257,15 +1402,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbbf0fbf91453a4cb445b28af8e448d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inverted: 0
   cameraTarget: {fileID: 2596105267599304283}
   aimVirtualCamera: {fileID: 3214508967219059168}
-  weaponRange: 50
-  projectileSpeed: 25
-  debugTransform: {fileID: 1123525081143515576}
   cameraMainSensitivity: 15
   cameraAimSensitivity: 7.5
   minVerticalRotation: -80
   maxVerticalRotation: 80
+  raycastRange: 200
+  projectileSpeed: 30
+  debugTransform: {fileID: 1123525081143515576}
+  mainCrosshair: {fileID: 837026392}
+  aimCrosshair: {fileID: 2094852671}
   vfxHitGreen: {fileID: 3176696417840036403, guid: faa8d43bd8fc49442a1c7093a25ad530, type: 3}
   vfxHitRed: {fileID: 2267907756078020405, guid: 8cc78077d3a8fdc449e8949767dc139d, type: 3}
 --- !u!4 &1863181639623449348
@@ -1282,7 +1430,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8978911438333559420}
-  m_Father: {fileID: 6772318626989188534}
+  m_Father: {fileID: 397989975}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2050011937309290435
 GameObject:
@@ -1512,6 +1660,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 301cb3ad-bf4b-401d-a612-6e35d71c4cba
     m_ActionName: RexyInput/Shoot
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f1e306c-63eb-4dc1-a6f0-c9d6a56a18b4
+    m_ActionName: RexyInput/SwitchInputLayout[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f25c4db4-5652-49e4-a8e6-0daebfff81eb
+    m_ActionName: InvertedRexyInput/Look[/Mouse/delta/left,/Mouse/delta/right,/Mouse/delta/up,/Mouse/delta/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 098a1ee2-912b-4f29-af2f-a4182be993a0
+    m_ActionName: InvertedRexyInput/Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7eab1f5f-67ff-4d1a-9958-53c1a33dfa62
+    m_ActionName: InvertedRexyInput/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c672b972-d5e0-4c29-ae26-a474678d871f
+    m_ActionName: InvertedRexyInput/SwitchInputLayout[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: RexyInput
@@ -1719,8 +1887,7 @@ Transform:
   - {fileID: 3787341471042579569}
   - {fileID: 4316037199687328653}
   - {fileID: 1123525081143515576}
-  - {fileID: 1863181639623449348}
-  - {fileID: 7784692301022004018}
+  - {fileID: 397989975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7023070886702165667
@@ -1772,7 +1939,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8911512249947803224}
-  m_Father: {fileID: 6772318626989188534}
+  m_Father: {fileID: 397989975}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7995137044463953164
 GameObject:
@@ -1889,11 +2056,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 280888292}
   - {fileID: 981639400}
+  - {fileID: 1153880558}
+  - {fileID: 6772318626989188534}
   - {fileID: 460568584}
   - {fileID: 1423290956}
   - {fileID: 1695070283}
   - {fileID: 833698747}
   - {fileID: 1383079026}
-  - {fileID: 6772318626989188534}
-  - {fileID: 1153880558}
   - {fileID: 393770193}
