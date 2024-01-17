@@ -1259,6 +1259,12 @@ MonoBehaviour:
   NormalScore: 100
   CritScore: 150
   PlayerScore: 0
+  VolumeSlider: {fileID: 0}
+  InvertedControlsToggle: {fileID: 0}
+  InputMappingToggle: {fileID: 0}
+  AudioManager: {fileID: 0}
+  InputMapping: {fileID: 0}
+  PlayerController: {fileID: 0}
 --- !u!4 &247097148
 Transform:
   m_ObjectHideFlags: 0
@@ -3148,7 +3154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 186296989}
   remainingTime: 90
-  sceneName: LoseScene
+  sceneName: Defeat
 --- !u!114 &990678636
 MonoBehaviour:
   m_ObjectHideFlags: 0
