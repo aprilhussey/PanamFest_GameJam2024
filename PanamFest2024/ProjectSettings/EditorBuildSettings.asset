@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BuildLevels/CreditsPage.unity
     guid: 81b4ccb05a8d8db46bea416d52a1f630
+  - enabled: 1
+    path: Assets/Scenes/BuildLevels/ScoreScreen.unity
+    guid: e6cdc31ca83539b4d83747df9acf8606
   m_configObjects: {}
