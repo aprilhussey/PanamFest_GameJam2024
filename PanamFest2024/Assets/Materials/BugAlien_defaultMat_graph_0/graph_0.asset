@@ -113,7 +113,7 @@ MonoBehaviour:
   OutputMaterial: {fileID: 2100000, guid: 6e1e6477636edf04bb6760c55c7fbb20, type: 2}
   DefaultPreset: " <sbspreset pkgurl=\"pkg://BugAlien_defaultMat\" label=\"\" >\n
     </sbspreset>\n"
-  MaterialShader: Standard
+  MaterialShader: Universal Render Pipeline/Lit
   RenderTextures: 0
   OutputRemaped: 0
   Presets: []
