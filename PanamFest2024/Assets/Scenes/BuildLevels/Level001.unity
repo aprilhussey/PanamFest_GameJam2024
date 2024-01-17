@@ -2577,7 +2577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 1473b1645acb07a428852fdbd903b08b, type: 3}
+    clip: {fileID: 8300000, guid: 0e3912838d904e84da26c5030e092de9, type: 3}
     volume: 1
     pitch: 1
     loop: 1
@@ -4138,83 +4138,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c494dcdc0f0b946b22345bd1750aba, type: 3}
---- !u!1001 &1272878910
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.91179645
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.91179645
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.32262003
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -17.6
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0431475db788cea4aa087d23d3f7b8b8, type: 2}
-    - target: {fileID: 919132149155446097, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_Name
-      value: Blockout
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 650fef82c3687674489c64753a7fb53f, type: 3}
 --- !u!4 &1273875954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20c494dcdc0f0b946b22345bd1750aba, type: 3}
@@ -6925,7 +6848,6 @@ SceneRoots:
   - {fileID: 1599849137}
   - {fileID: 1691306475}
   - {fileID: 290806473}
-  - {fileID: 1272878910}
   - {fileID: 1554837611}
   - {fileID: 396123750}
   - {fileID: 817712521}
