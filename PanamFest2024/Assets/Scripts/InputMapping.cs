@@ -33,7 +33,7 @@ public class InputMapping : MonoBehaviour
     {
         Debug.Log("Switched...");
 
-        if (PlayerPrefs.GetInt("FlipWheels") == 1)
+        if (PlayerPrefs.GetInt("FlipWheels") == 0)
         {
             Debug.Log("to RexyInput");
 
@@ -41,7 +41,7 @@ public class InputMapping : MonoBehaviour
             InvertedRexyInput.Disable();
 
         }
-        else if (PlayerPrefs.GetInt("FlipWheels") == 0)
+        else if (PlayerPrefs.GetInt("FlipWheels") == 1)
         {
             Debug.Log("to InvertedRexyInput");
 
