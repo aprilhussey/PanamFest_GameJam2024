@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerController PlayerController;
 
     // Player Prefs
-    public PlayerPrefs Volume;
-    public PlayerPrefs InvertControls;
-    public PlayerPrefs FlipWheels;
+    PlayerPrefs Volume;
+    PlayerPrefs InvertControls;
+    PlayerPrefs FlipWheels;
 
 	void Awake()
 	{
@@ -58,34 +58,40 @@ public class GameManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        if  (InputMapping == null)
-        {
-            if (FindObjectOfType<InputMapping>() != null)
-            {
-                InputMapping = FindObjectOfType<InputMapping>();
-            }
-        }
 
-        if (PlayerController == null)
-        {
-            if (FindObjectOfType<PlayerController>() != null)
-            {
-                PlayerController = FindObjectOfType<PlayerController>();
-            }
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (InputMapping == null)
+        {
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                //Debug.Log("Input Mapping assigned");
+                InputMapping = GameObject.FindGameObjectWithTag("Player").GetComponent<InputMapping>();
+            }
+        }
+
+        if (PlayerController == null)
+        {
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                //Debug.Log("Player Controller assigned");
+                PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            }
+        }
+
         PlayerPrefs.SetFloat("Volume", VolumeSlider.GetComponent<UnityEngine.UI.Slider>().value);
 
         if (InvertedControlsToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == true)
         {
+            Debug.Log("Inverted on");
             PlayerPrefs.SetInt("InvertedControls", 1);
         }
         else if (InvertedControlsToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == false)
         {
+            Debug.Log("Inverted off");
             PlayerPrefs.SetInt("InvertedControls", 0);
         }
 
@@ -101,6 +107,11 @@ public class GameManager : MonoBehaviour
         // Assigning PlayerPrefs
         if (AudioManager != null)
         {
+            //for (int i = 0; i < AudioManager.GetComponent<AudioManager>().sounds.Length; i++)
+            //{
+            //    AudioManager.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+            //}
+
             AudioManager.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
         }
 
