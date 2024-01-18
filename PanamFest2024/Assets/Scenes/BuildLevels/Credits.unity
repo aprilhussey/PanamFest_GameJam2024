@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -207,15 +207,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 490733406}
-        m_TargetAssemblyTypeName: TutorialLevelFinished, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 1
+        m_TargetAssemblyTypeName: LoadScenes, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3786718
@@ -340,10 +340,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 490733405}
+  - component: {fileID: 490733406}
   - component: {fileID: 490733404}
   - component: {fileID: 490733403}
   - component: {fileID: 490733402}
-  - component: {fileID: 490733406}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -380,12 +380,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -443,11 +443,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 490733401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0097076bc2a85459af2ac8f1e3fec9, type: 3}
+  m_Script: {fileID: 11500000, guid: d22ba8dbb0e5c03468a77110d51e287f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level001: MainMenu
-  tutorial: 
+  loadingScene: {fileID: 102900000, guid: 0a1c2e64b445ec1499934ee72fe1360a, type: 3}
 --- !u!1 &1066700084
 GameObject:
   m_ObjectHideFlags: 0
