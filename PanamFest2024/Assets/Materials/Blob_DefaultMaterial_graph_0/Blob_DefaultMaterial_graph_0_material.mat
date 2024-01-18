@@ -15,7 +15,8 @@ Material:
   - _EMISSION
   - _NORMALMAP
   - _PARALLAXMAP
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _METALLICSPECGLOSSMAP
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -63,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 969b4f7d8872c4447a4ce81fc3aba8f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: c0d011a91d867604db376aa2f33a29ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
