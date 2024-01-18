@@ -61,6 +61,7 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
 		}
 
 		if (scene.name == "Loading")
@@ -72,6 +73,7 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
 		}
 
 		if (scene.name == "Tutorial")
@@ -85,10 +87,9 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
 
 			GameManager.Instance.PlayerScore = 0;
-
-			playerController.pauseMenuCanvas = tutorialPauseMenuCanvas;
 		}
 
 		if (scene.name == "Level001")
@@ -102,10 +103,9 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
 
 			GameManager.Instance.PlayerScore = 0;
-
-			playerController.pauseMenuCanvas = pauseMenuCanvas;
 		}
 
 		if (scene.name == "ScoreScreen")
@@ -117,6 +117,7 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
 		}
 
 		if (scene.name == "Credits")
@@ -128,6 +129,7 @@ public class SceneController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			optionsMenuCanvas.SetActive(false);
 			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
 		}
 	}
 

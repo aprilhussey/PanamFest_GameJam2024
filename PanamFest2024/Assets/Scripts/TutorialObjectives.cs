@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TutorialObjectives : MonoBehaviour
@@ -35,14 +36,12 @@ public class TutorialObjectives : MonoBehaviour
 
         if (playerLookInput.y != 0 && lookUpDown.activeInHierarchy)
         {
-            Disable(lookUpDown);
-            Enable(lookLeftRight);
+			StartCoroutine(DelayTutorialChange(lookUpDown, lookLeftRight, 1f, 1f));
         }
 
 		if (playerLookInput.x != 0 && lookLeftRight.activeInHierarchy)
 		{
-			Disable(lookLeftRight);
-			Enable(scope);
+			StartCoroutine(DelayTutorialChange(lookLeftRight, scope, 1f, 1f));
 		}
 
         if (tutorialCompleteCanvas.activeInHierarchy)
@@ -58,8 +57,7 @@ public class TutorialObjectives : MonoBehaviour
     {
         if (scope.activeInHierarchy)
         {
-            Disable(scope);
-            Enable(shoot);
+			StartCoroutine(DelayTutorialChange(scope, shoot, 1f, 1f));
         }
     }
 
@@ -67,9 +65,16 @@ public class TutorialObjectives : MonoBehaviour
 	{
 		if (shoot.activeInHierarchy)
 		{
-			Disable(shoot);
-			Enable(tutorialCompleteCanvas);
+			StartCoroutine(DelayTutorialChange(shoot, tutorialCompleteCanvas, 1f, 1f));
 		}
+	}
+
+	IEnumerator DelayTutorialChange(GameObject disableObject, GameObject enableObject, float secondsBeforeDisable, float secondsBeforeEnable)
+	{
+		yield return new WaitForSecondsRealtime(secondsBeforeDisable);
+		Disable(disableObject);
+		yield return new WaitForSecondsRealtime(secondsBeforeEnable);
+		Enable(enableObject);
 	}
 
 	private void Enable(GameObject objective)
