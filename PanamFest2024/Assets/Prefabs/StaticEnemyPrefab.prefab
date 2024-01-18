@@ -368,6 +368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glorbtoof
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 87fa6d00e8b6e8542a89b5b7e04a9b96, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a03ef4d612dd43f46beb769a057265c8, type: 2}
     - target: {fileID: 8293510266498974470, guid: 87fa6d00e8b6e8542a89b5b7e04a9b96, type: 3}
       propertyPath: m_IsActive
       value: 0
