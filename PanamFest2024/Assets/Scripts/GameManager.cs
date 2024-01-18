@@ -32,15 +32,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioManager AudioManager;
 
     [Tooltip("")]
-    [SerializeField] public InputMapping InputMapping;
+    [SerializeField] InputMapping InputMapping;
 
     [Tooltip("")]
     [SerializeField] PlayerController PlayerController;
 
     // Player Prefs
-    PlayerPrefs Volume;
-    PlayerPrefs InvertControls;
-    PlayerPrefs FlipWheels;
+    public PlayerPrefs Volume;
+    public PlayerPrefs InvertControls;
+    public PlayerPrefs FlipWheels;
 
 	void Awake()
 	{
@@ -58,7 +58,21 @@ public class GameManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
+        if  (InputMapping == null)
+        {
+            if (FindObjectOfType<InputMapping>() != null)
+            {
+                InputMapping = FindObjectOfType<InputMapping>();
+            }
+        }
+
+        if (PlayerController == null)
+        {
+            if (FindObjectOfType<PlayerController>() != null)
+            {
+                PlayerController = FindObjectOfType<PlayerController>();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -87,7 +101,7 @@ public class GameManager : MonoBehaviour
         // Assigning PlayerPrefs
         if (AudioManager != null)
         {
-            //[Insert line to adjust audio volume based on the PLayerPref "Volume"]
+            AudioManager.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
         }
 
         if (InputMapping != null)
