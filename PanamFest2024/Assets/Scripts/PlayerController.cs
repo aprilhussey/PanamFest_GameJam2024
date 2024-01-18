@@ -67,21 +67,8 @@ public class PlayerController : MonoBehaviour
 	[Header("Canvases")]
 	private GameObject pauseMenuCanvas;
 	private GameObject optionsMenuCanvas;
-
-	[SerializeField]
-	private InputAction pauseAction;
-
-	void OnEnable()
-	{
-		pauseAction.performed += OnPausePerformed;
-		pauseAction.Enable();
-	}
-
-	void OnDisable()
-	{
-		pauseAction.performed -= OnPausePerformed;
-		pauseAction.Disable();
-	}
+	private GameObject tutorialCompleteCanvas;
+	private GameObject tutorialPauseMenuCanvas;
 
 	void Awake()
 	{
@@ -101,11 +88,14 @@ public class PlayerController : MonoBehaviour
 
 		pauseMenuCanvas = SceneController.Instance.pauseMenuCanvas;
 		optionsMenuCanvas = SceneController.Instance.optionsMenuCanvas;
+		tutorialCompleteCanvas = SceneController.Instance.tutorialCompleteCanvas;
+		tutorialPauseMenuCanvas = SceneController.Instance.tutorialPauseMenuCanvas;
 	}
 
 	void Update()
 	{
-		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy
+			&& !tutorialCompleteCanvas.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			// LOOK //
 			// Keep track of current rotation
@@ -136,13 +126,14 @@ public class PlayerController : MonoBehaviour
 				cooldownTimer -= Time.deltaTime;
 			}
 		}
-		else if (pauseMenuCanvas.activeInHierarchy || optionsMenuCanvas.activeInHierarchy)
+		else if (pauseMenuCanvas.activeInHierarchy || optionsMenuCanvas.activeInHierarchy
+			|| tutorialCompleteCanvas.activeInHierarchy || tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			lookInput = Vector2.zero;
 		}
 	}
 
-	void OnPausePerformed(InputAction.CallbackContext context)
+	public void OnPause(InputAction.CallbackContext context)
 	{
 		if (!pauseMenuCanvas.activeInHierarchy)
 		{
@@ -152,7 +143,8 @@ public class PlayerController : MonoBehaviour
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
 		}
-		else if (pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy)
+		else if (pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy
+			&& !tutorialCompleteCanvas.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			Time.timeScale = 1f;
 
@@ -162,9 +154,31 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	public void OnPauseTutorial(InputAction.CallbackContext context)
+	{
+		if (!tutorialPauseMenuCanvas.activeInHierarchy)
+		{
+			Time.timeScale = 0f;
+
+			tutorialPauseMenuCanvas.SetActive(true);
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+		}
+		else if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy
+			&& !tutorialCompleteCanvas.activeInHierarchy || tutorialPauseMenuCanvas.activeInHierarchy)
+		{
+			Time.timeScale = 1f;
+
+			tutorialPauseMenuCanvas.SetActive(false);
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+	}
+
 	public void OnLook(InputAction.CallbackContext context)
 	{
-		if (!pauseMenuCanvas.activeInHierarchy || !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy
+			&& !tutorialCompleteCanvas.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			if (!Inverted)
 			{
@@ -201,7 +215,8 @@ public class PlayerController : MonoBehaviour
 	{
 		if (context.action.triggered)
 		{
-			if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
+			if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy
+				&& !tutorialCompleteCanvas.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 			{
 				if (!aimVirtualCamera.gameObject.activeInHierarchy)
 				{
@@ -229,7 +244,8 @@ public class PlayerController : MonoBehaviour
 
 	public void OnShoot(InputAction.CallbackContext context)
 	{
-		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy)
+		if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.gameObject.activeInHierarchy
+			&& !tutorialCompleteCanvas.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			if (cooldownTimer <= 0) // If not in cooldown
 			{
