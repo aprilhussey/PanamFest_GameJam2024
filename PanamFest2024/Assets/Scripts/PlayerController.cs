@@ -142,6 +142,8 @@ public class PlayerController : MonoBehaviour
 			pauseMenuCanvas.SetActive(true);
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
+
+			AudioManager.Instance.Play("Menu_Cancel");
 		}
 		else if (pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy
 			&& !tutorialCompleteCanvas.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
@@ -151,6 +153,8 @@ public class PlayerController : MonoBehaviour
 			pauseMenuCanvas.SetActive(false);
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
+
+			AudioManager.Instance.Play("Menu_Select");
 		}
 	}
 
@@ -163,6 +167,8 @@ public class PlayerController : MonoBehaviour
 			tutorialPauseMenuCanvas.SetActive(true);
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
+
+			AudioManager.Instance.Play("Menu_Cancel");
 		}
 		else if (!pauseMenuCanvas.activeInHierarchy && !optionsMenuCanvas.activeInHierarchy
 			&& !tutorialCompleteCanvas.activeInHierarchy || tutorialPauseMenuCanvas.activeInHierarchy)
@@ -172,6 +178,8 @@ public class PlayerController : MonoBehaviour
 			tutorialPauseMenuCanvas.SetActive(false);
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Locked;
+
+			AudioManager.Instance.Play("Menu_Select");
 		}
 	}
 
