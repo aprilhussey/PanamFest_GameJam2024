@@ -32,8 +32,6 @@ public class TutorialObjectives : MonoBehaviour
     {
         playerLookInput = playerController.lookInput;
 
-        Debug.Log($"lookInput: {playerLookInput}");
-
         if (playerLookInput.y != 0 && lookUpDown.activeInHierarchy)
         {
 			StartCoroutine(DelayTutorialChange(lookUpDown, lookLeftRight, 1f, 1f));

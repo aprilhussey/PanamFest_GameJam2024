@@ -76,6 +76,18 @@ public class SceneController : MonoBehaviour
 			tutorialPauseMenuCanvas.SetActive(false);
 		}
 
+		if (scene.name == "PlayTutorial")
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+
+			mainMenuCanvas.SetActive(false);
+			pauseMenuCanvas.SetActive(false);
+			optionsMenuCanvas.SetActive(false);
+			tutorialCompleteCanvas.SetActive(false);
+			tutorialPauseMenuCanvas.SetActive(false);
+		}
+
 		if (scene.name == "Tutorial")
 		{
 			Time.timeScale = 1f;
