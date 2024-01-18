@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioManager AudioManager;
 
     [Tooltip("")]
-    [SerializeField] public InputMapping InputMapping;
+    [SerializeField] InputMapping InputMapping;
 
     [Tooltip("")]
     [SerializeField] PlayerController PlayerController;
@@ -58,20 +58,40 @@ public class GameManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (InputMapping == null)
+        {
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                //Debug.Log("Input Mapping assigned");
+                InputMapping = GameObject.FindGameObjectWithTag("Player").GetComponent<InputMapping>();
+            }
+        }
+
+        if (PlayerController == null)
+        {
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                //Debug.Log("Player Controller assigned");
+                PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            }
+        }
+
         PlayerPrefs.SetFloat("Volume", VolumeSlider.GetComponent<UnityEngine.UI.Slider>().value);
 
         if (InvertedControlsToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == true)
         {
+            Debug.Log("Inverted on");
             PlayerPrefs.SetInt("InvertedControls", 1);
         }
         else if (InvertedControlsToggle.GetComponent<UnityEngine.UI.Toggle>().isOn == false)
         {
+            Debug.Log("Inverted off");
             PlayerPrefs.SetInt("InvertedControls", 0);
         }
 
@@ -87,7 +107,12 @@ public class GameManager : MonoBehaviour
         // Assigning PlayerPrefs
         if (AudioManager != null)
         {
-            //[Insert line to adjust audio volume based on the PLayerPref "Volume"]
+            //for (int i = 0; i < AudioManager.GetComponent<AudioManager>().sounds.Length; i++)
+            //{
+            //    AudioManager.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+            //}
+
+            AudioManager.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
         }
 
         if (InputMapping != null)

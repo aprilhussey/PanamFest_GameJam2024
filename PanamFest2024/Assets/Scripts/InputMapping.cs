@@ -21,7 +21,6 @@ public class InputMapping : MonoBehaviour
         RexyInput.Enable();
         InvertedRexyInput.Disable();
 
-        FlippedWheels = false;
     }
 
     // Update is called once per frame
@@ -34,23 +33,21 @@ public class InputMapping : MonoBehaviour
     {
         Debug.Log("Switched...");
 
-        if (!RexyInput.enabled)
+        if (PlayerPrefs.GetInt("FlipWheels") == 1)
         {
             Debug.Log("to RexyInput");
 
             RexyInput.Enable();
             InvertedRexyInput.Disable();
 
-            FlippedWheels = false;
         }
-        else if (!InvertedRexyInput.enabled)
+        else if (PlayerPrefs.GetInt("FlipWheels") == 0)
         {
             Debug.Log("to InvertedRexyInput");
 
             RexyInput.Disable();
             InvertedRexyInput.Enable();
 
-            FlippedWheels = true;
         }
     }
 }
