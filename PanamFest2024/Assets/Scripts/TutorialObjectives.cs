@@ -16,6 +16,7 @@ public class TutorialObjectives : MonoBehaviour
 
     private PlayerController playerController;
     private Vector2 playerLookInput;
+	private GameObject tutorialPauseMenuCanvas;
 
     void Awake()
     {
@@ -25,19 +26,20 @@ public class TutorialObjectives : MonoBehaviour
 
     void Start()
     {
-        Enable(lookUpDown);
+		tutorialPauseMenuCanvas = SceneController.Instance.tutorialPauseMenuCanvas;
+		Enable(lookUpDown);
     }
 
     void Update()
     {
         playerLookInput = playerController.lookInput;
 
-        if (playerLookInput.y != 0 && lookUpDown.activeInHierarchy)
+        if (playerLookInput.y != 0 && lookUpDown.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
         {
 			StartCoroutine(DelayTutorialChange(lookUpDown, lookLeftRight, 1f, 1f));
         }
 
-		if (playerLookInput.x != 0 && lookLeftRight.activeInHierarchy)
+		if (playerLookInput.x != 0 && lookLeftRight.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			StartCoroutine(DelayTutorialChange(lookLeftRight, scope, 1f, 1f));
 		}
@@ -53,7 +55,7 @@ public class TutorialObjectives : MonoBehaviour
 
     public void OnScopeTutorialDone()
     {
-        if (scope.activeInHierarchy)
+        if (scope.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
         {
 			StartCoroutine(DelayTutorialChange(scope, shoot, 1f, 1f));
         }
@@ -61,7 +63,7 @@ public class TutorialObjectives : MonoBehaviour
 
 	public void OnShootTutorialDone()
 	{
-		if (shoot.activeInHierarchy)
+		if (shoot.activeInHierarchy && !tutorialPauseMenuCanvas.activeInHierarchy)
 		{
 			StartCoroutine(DelayTutorialChange(shoot, tutorialCompleteCanvas, 1f, 1f));
 		}
